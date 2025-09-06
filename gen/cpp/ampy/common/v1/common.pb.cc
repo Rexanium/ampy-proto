@@ -250,18 +250,18 @@ const char descriptor_table_protodef_ampy_2fcommon_2fv1_2fcommon_2eproto[] ABSL_
     "ION\020\002*\201\001\n\nActionType\022\033\n\027ACTION_TYPE_UNSP"
     "ECIFIED\020\000\022\023\n\017ACTION_TYPE_BUY\020\001\022\024\n\020ACTION"
     "_TYPE_SELL\020\002\022\024\n\020ACTION_TYPE_HOLD\020\003\022\025\n\021AC"
-    "TION_TYPE_CLOSE\020\004B\275\001\n\022com.ampy.common.v1"
-    "B\013CommonProtoP\001Z@github.com/yeonholee50/"
-    "ampy-proto/gen/go/ampy/common/v1;commonv"
-    "1\242\002\003ACX\252\002\016Ampy.Common.V1\312\002\016Ampy\\Common\\V"
-    "1\342\002\032Ampy\\Common\\V1\\GPBMetadata\352\002\020Ampy::C"
-    "ommon::V1b\006proto3"
+    "TION_TYPE_CLOSE\020\004B\271\001\n\022com.ampy.common.v1"
+    "B\013CommonProtoP\001Z<github.com/AmpyFin/ampy"
+    "-proto/gen/go/ampy/common/v1;commonv1\242\002\003"
+    "ACX\252\002\016Ampy.Common.V1\312\002\016Ampy\\Common\\V1\342\002\032"
+    "Ampy\\Common\\V1\\GPBMetadata\352\002\020Ampy::Commo"
+    "n::V1b\006proto3"
 };
 static ::absl::once_flag descriptor_table_ampy_2fcommon_2fv1_2fcommon_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_ampy_2fcommon_2fv1_2fcommon_2eproto = {
     false,
     false,
-    1377,
+    1373,
     descriptor_table_protodef_ampy_2fcommon_2fv1_2fcommon_2eproto,
     "ampy/common/v1/common.proto",
     &descriptor_table_ampy_2fcommon_2fv1_2fcommon_2eproto_once,

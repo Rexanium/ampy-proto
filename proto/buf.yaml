@@ -1,5 +1,5 @@
 version: v1
-name: buf.build/yeonholee50/ampy-proto
+name: buf.build/AmpyFin/ampy-proto
 
 lint:
   use:

@@ -170,12 +170,12 @@ const char descriptor_table_protodef_ampy_2forders_2fv1_2forders_2eproto[] ABSL_
     "(\0132\032.google.protobuf.TimestampR\tcreatedA"
     "t\022(\n\004meta\030\r \001(\0132\024.ampy.common.v1.MetaR\004m"
     "eta\"I\n\021OrderRequestBatch\0224\n\006orders\030\001 \003(\013"
-    "2\034.ampy.orders.v1.OrderRequestR\006ordersB\275"
-    "\001\n\022com.ampy.orders.v1B\013OrdersProtoP\001Z@gi"
-    "thub.com/yeonholee50/ampy-proto/gen/go/a"
-    "mpy/orders/v1;ordersv1\242\002\003AOX\252\002\016Ampy.Orde"
-    "rs.V1\312\002\016Ampy\\Orders\\V1\342\002\032Ampy\\Orders\\V1\\"
-    "GPBMetadata\352\002\020Ampy::Orders::V1b\006proto3"
+    "2\034.ampy.orders.v1.OrderRequestR\006ordersB\271"
+    "\001\n\022com.ampy.orders.v1B\013OrdersProtoP\001Z<gi"
+    "thub.com/AmpyFin/ampy-proto/gen/go/ampy/"
+    "orders/v1;ordersv1\242\002\003AOX\252\002\016Ampy.Orders.V"
+    "1\312\002\016Ampy\\Orders\\V1\342\002\032Ampy\\Orders\\V1\\GPBM"
+    "etadata\352\002\020Ampy::Orders::V1b\006proto3"
 };
 static const ::_pbi::DescriptorTable* PROTOBUF_NONNULL const
     descriptor_table_ampy_2forders_2fv1_2forders_2eproto_deps[2] = {
@@ -186,7 +186,7 @@ static ::absl::once_flag descriptor_table_ampy_2forders_2fv1_2forders_2eproto_on
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_ampy_2forders_2fv1_2forders_2eproto = {
     false,
     false,
-    998,
+    994,
     descriptor_table_protodef_ampy_2forders_2fv1_2forders_2eproto,
     "ampy/orders/v1/orders.proto",
     &descriptor_table_ampy_2forders_2fv1_2forders_2eproto_once,

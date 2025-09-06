@@ -172,11 +172,11 @@ const char descriptor_table_protodef_ampy_2ffx_2fv1_2ffx_2eproto[] ABSL_ATTRIBUT
     "mid\022/\n\005as_of\030\005 \001(\0132\032.google.protobuf.Tim"
     "estampR\004asOf\022(\n\004meta\030\006 \001(\0132\024.ampy.common"
     ".v1.MetaR\004meta\"7\n\013FxRateBatch\022(\n\005rates\030\001"
-    " \003(\0132\022.ampy.fx.v1.FxRateR\005ratesB\235\001\n\016com."
-    "ampy.fx.v1B\007FxProtoP\001Z8github.com/yeonho"
-    "lee50/ampy-proto/gen/go/ampy/fx/v1;fxv1\242"
-    "\002\003AFX\252\002\nAmpy.Fx.V1\312\002\nAmpy\\Fx\\V1\342\002\026Ampy\\F"
-    "x\\V1\\GPBMetadata\352\002\014Ampy::Fx::V1b\006proto3"
+    " \003(\0132\022.ampy.fx.v1.FxRateR\005ratesB\231\001\n\016com."
+    "ampy.fx.v1B\007FxProtoP\001Z4github.com/AmpyFi"
+    "n/ampy-proto/gen/go/ampy/fx/v1;fxv1\242\002\003AF"
+    "X\252\002\nAmpy.Fx.V1\312\002\nAmpy\\Fx\\V1\342\002\026Ampy\\Fx\\V1"
+    "\\GPBMetadata\352\002\014Ampy::Fx::V1b\006proto3"
 };
 static const ::_pbi::DescriptorTable* PROTOBUF_NONNULL const
     descriptor_table_ampy_2ffx_2fv1_2ffx_2eproto_deps[2] = {
@@ -187,7 +187,7 @@ static ::absl::once_flag descriptor_table_ampy_2ffx_2fv1_2ffx_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_ampy_2ffx_2fv1_2ffx_2eproto = {
     false,
     false,
-    639,
+    635,
     descriptor_table_protodef_ampy_2ffx_2fv1_2ffx_2eproto,
     "ampy/fx/v1/fx.proto",
     &descriptor_table_ampy_2ffx_2fv1_2ffx_2eproto_once,

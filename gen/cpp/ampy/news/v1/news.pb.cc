@@ -156,12 +156,12 @@ const char descriptor_table_protodef_ampy_2fnews_2fv1_2fnews_2eproto[] ABSL_ATTR
     "ngest_time\030\t \001(\0132\032.google.protobuf.Times"
     "tampR\ningestTime\022(\n\004meta\030\n \001(\0132\024.ampy.co"
     "mmon.v1.MetaR\004meta\"9\n\tNewsBatch\022,\n\005items"
-    "\030\001 \003(\0132\026.ampy.news.v1.NewsItemR\005itemsB\255\001"
-    "\n\020com.ampy.news.v1B\tNewsProtoP\001Z<github."
-    "com/yeonholee50/ampy-proto/gen/go/ampy/n"
-    "ews/v1;newsv1\242\002\003ANX\252\002\014Ampy.News.V1\312\002\014Amp"
-    "y\\News\\V1\342\002\030Ampy\\News\\V1\\GPBMetadata\352\002\016A"
-    "mpy::News::V1b\006proto3"
+    "\030\001 \003(\0132\026.ampy.news.v1.NewsItemR\005itemsB\251\001"
+    "\n\020com.ampy.news.v1B\tNewsProtoP\001Z8github."
+    "com/AmpyFin/ampy-proto/gen/go/ampy/news/"
+    "v1;newsv1\242\002\003ANX\252\002\014Ampy.News.V1\312\002\014Ampy\\Ne"
+    "ws\\V1\342\002\030Ampy\\News\\V1\\GPBMetadata\352\002\016Ampy:"
+    ":News::V1b\006proto3"
 };
 static const ::_pbi::DescriptorTable* PROTOBUF_NONNULL const
     descriptor_table_ampy_2fnews_2fv1_2fnews_2eproto_deps[2] = {
@@ -172,7 +172,7 @@ static ::absl::once_flag descriptor_table_ampy_2fnews_2fv1_2fnews_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_ampy_2fnews_2fv1_2fnews_2eproto = {
     false,
     false,
-    701,
+    697,
     descriptor_table_protodef_ampy_2fnews_2fv1_2fnews_2eproto,
     "ampy/news/v1/news.proto",
     &descriptor_table_ampy_2fnews_2fv1_2fnews_2eproto_once,

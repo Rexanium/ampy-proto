@@ -181,11 +181,11 @@ const char descriptor_table_protodef_ampy_2fbars_2fv1_2fbars_2eproto[] ABSL_ATTR
     "ogle.protobuf.TimestampR\004asOf\022(\n\004meta\030\020 "
     "\001(\0132\024.ampy.common.v1.MetaR\004meta\"1\n\010BarBa"
     "tch\022%\n\004bars\030\001 \003(\0132\021.ampy.bars.v1.BarR\004ba"
-    "rsB\255\001\n\020com.ampy.bars.v1B\tBarsProtoP\001Z<gi"
-    "thub.com/yeonholee50/ampy-proto/gen/go/a"
-    "mpy/bars/v1;barsv1\242\002\003ABX\252\002\014Ampy.Bars.V1\312"
-    "\002\014Ampy\\Bars\\V1\342\002\030Ampy\\Bars\\V1\\GPBMetadat"
-    "a\352\002\016Ampy::Bars::V1b\006proto3"
+    "rsB\251\001\n\020com.ampy.bars.v1B\tBarsProtoP\001Z8gi"
+    "thub.com/AmpyFin/ampy-proto/gen/go/ampy/"
+    "bars/v1;barsv1\242\002\003ABX\252\002\014Ampy.Bars.V1\312\002\014Am"
+    "py\\Bars\\V1\342\002\030Ampy\\Bars\\V1\\GPBMetadata\352\002\016"
+    "Ampy::Bars::V1b\006proto3"
 };
 static const ::_pbi::DescriptorTable* PROTOBUF_NONNULL const
     descriptor_table_ampy_2fbars_2fv1_2fbars_2eproto_deps[2] = {
@@ -196,7 +196,7 @@ static ::absl::once_flag descriptor_table_ampy_2fbars_2fv1_2fbars_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_ampy_2fbars_2fv1_2fbars_2eproto = {
     false,
     false,
-    1146,
+    1142,
     descriptor_table_protodef_ampy_2fbars_2fv1_2fbars_2eproto,
     "ampy/bars/v1/bars.proto",
     &descriptor_table_ampy_2fbars_2fv1_2fbars_2eproto_once,

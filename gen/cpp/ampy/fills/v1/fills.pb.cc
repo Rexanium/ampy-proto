@@ -153,12 +153,11 @@ const char descriptor_table_protodef_ampy_2ffills_2fv1_2ffills_2eproto[] ABSL_AT
     "tobuf.TimestampR\teventTime\022(\n\004meta\030\t \001(\013"
     "2\024.ampy.common.v1.MetaR\004meta\";\n\tFillBatc"
     "h\022.\n\005fills\030\001 \003(\0132\030.ampy.fills.v1.FillEve"
-    "ntR\005fillsB\265\001\n\021com.ampy.fills.v1B\nFillsPr"
-    "otoP\001Z>github.com/yeonholee50/ampy-proto"
-    "/gen/go/ampy/fills/v1;fillsv1\242\002\003AFX\252\002\rAm"
-    "py.Fills.V1\312\002\rAmpy\\Fills\\V1\342\002\031Ampy\\Fills"
-    "\\V1\\GPBMetadata\352\002\017Ampy::Fills::V1b\006proto"
-    "3"
+    "ntR\005fillsB\261\001\n\021com.ampy.fills.v1B\nFillsPr"
+    "otoP\001Z:github.com/AmpyFin/ampy-proto/gen"
+    "/go/ampy/fills/v1;fillsv1\242\002\003AFX\252\002\rAmpy.F"
+    "ills.V1\312\002\rAmpy\\Fills\\V1\342\002\031Ampy\\Fills\\V1\\"
+    "GPBMetadata\352\002\017Ampy::Fills::V1b\006proto3"
 };
 static const ::_pbi::DescriptorTable* PROTOBUF_NONNULL const
     descriptor_table_ampy_2ffills_2fv1_2ffills_2eproto_deps[2] = {
@@ -169,7 +168,7 @@ static ::absl::once_flag descriptor_table_ampy_2ffills_2fv1_2ffills_2eproto_once
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_ampy_2ffills_2fv1_2ffills_2eproto = {
     false,
     false,
-    761,
+    757,
     descriptor_table_protodef_ampy_2ffills_2fv1_2ffills_2eproto,
     "ampy/fills/v1/fills.proto",
     &descriptor_table_ampy_2ffills_2fv1_2ffills_2eproto_once,

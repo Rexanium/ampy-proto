@@ -185,12 +185,12 @@ const char descriptor_table_protodef_ampy_2funiverse_2fv1_2funiverse_2eproto[] A
     "uleset\022(\n\004meta\030\005 \001(\0132\024.ampy.common.v1.Me"
     "taR\004meta\"Q\n\rUniverseBatch\022@\n\tsnapshots\030\001"
     " \003(\0132\".ampy.universe.v1.UniverseSnapshot"
-    "R\tsnapshotsB\315\001\n\024com.ampy.universe.v1B\rUn"
-    "iverseProtoP\001ZDgithub.com/yeonholee50/am"
-    "py-proto/gen/go/ampy/universe/v1;univers"
-    "ev1\242\002\003AUX\252\002\020Ampy.Universe.V1\312\002\020Ampy\\Univ"
-    "erse\\V1\342\002\034Ampy\\Universe\\V1\\GPBMetadata\352\002"
-    "\022Ampy::Universe::V1b\006proto3"
+    "R\tsnapshotsB\311\001\n\024com.ampy.universe.v1B\rUn"
+    "iverseProtoP\001Z@github.com/AmpyFin/ampy-p"
+    "roto/gen/go/ampy/universe/v1;universev1\242"
+    "\002\003AUX\252\002\020Ampy.Universe.V1\312\002\020Ampy\\Universe"
+    "\\V1\342\002\034Ampy\\Universe\\V1\\GPBMetadata\352\002\022Amp"
+    "y::Universe::V1b\006proto3"
 };
 static const ::_pbi::DescriptorTable* PROTOBUF_NONNULL const
     descriptor_table_ampy_2funiverse_2fv1_2funiverse_2eproto_deps[2] = {
@@ -201,7 +201,7 @@ static ::absl::once_flag descriptor_table_ampy_2funiverse_2fv1_2funiverse_2eprot
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_ampy_2funiverse_2fv1_2funiverse_2eproto = {
     false,
     false,
-    747,
+    743,
     descriptor_table_protodef_ampy_2funiverse_2fv1_2funiverse_2eproto,
     "ampy/universe/v1/universe.proto",
     &descriptor_table_ampy_2funiverse_2fv1_2funiverse_2eproto_once,

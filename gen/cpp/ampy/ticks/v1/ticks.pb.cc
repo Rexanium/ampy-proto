@@ -242,12 +242,12 @@ const char descriptor_table_protodef_ampy_2fticks_2fv1_2fticks_2eproto[] ABSL_AT
     "(\0132\030.ampy.ticks.v1.TradeTickH\000R\005trade\0220\n"
     "\005quote\030\002 \001(\0132\030.ampy.ticks.v1.QuoteTickH\000"
     "R\005quoteB\006\n\004kind\"6\n\tTickBatch\022)\n\005ticks\030\001 "
-    "\003(\0132\023.ampy.ticks.v1.TickR\005ticksB\265\001\n\021com."
-    "ampy.ticks.v1B\nTicksProtoP\001Z>github.com/"
-    "yeonholee50/ampy-proto/gen/go/ampy/ticks"
-    "/v1;ticksv1\242\002\003ATX\252\002\rAmpy.Ticks.V1\312\002\rAmpy"
-    "\\Ticks\\V1\342\002\031Ampy\\Ticks\\V1\\GPBMetadata\352\002\017"
-    "Ampy::Ticks::V1b\006proto3"
+    "\003(\0132\023.ampy.ticks.v1.TickR\005ticksB\261\001\n\021com."
+    "ampy.ticks.v1B\nTicksProtoP\001Z:github.com/"
+    "AmpyFin/ampy-proto/gen/go/ampy/ticks/v1;"
+    "ticksv1\242\002\003ATX\252\002\rAmpy.Ticks.V1\312\002\rAmpy\\Tic"
+    "ks\\V1\342\002\031Ampy\\Ticks\\V1\\GPBMetadata\352\002\017Ampy"
+    "::Ticks::V1b\006proto3"
 };
 static const ::_pbi::DescriptorTable* PROTOBUF_NONNULL const
     descriptor_table_ampy_2fticks_2fv1_2fticks_2eproto_deps[2] = {
@@ -258,7 +258,7 @@ static ::absl::once_flag descriptor_table_ampy_2fticks_2fv1_2fticks_2eproto_once
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_ampy_2fticks_2fv1_2fticks_2eproto = {
     false,
     false,
-    1183,
+    1179,
     descriptor_table_protodef_ampy_2fticks_2fv1_2fticks_2eproto,
     "ampy/ticks/v1/ticks.proto",
     &descriptor_table_ampy_2fticks_2fv1_2fticks_2eproto_once,

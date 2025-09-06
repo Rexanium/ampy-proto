@@ -219,14 +219,14 @@ const char descriptor_table_protodef_ampy_2fcorporate_5factions_2fv1_2fcorporate
     "s.v1.DividendActionH\000R\010dividendB\010\n\006actio"
     "n\"\\\n\024CorporateActionBatch\022D\n\007actions\030\001 \003"
     "(\0132*.ampy.corporate_actions.v1.Corporate"
-    "ActionR\007actionsB\220\002\n\035com.ampy.corporate_a"
-    "ctions.v1B\025CorporateActionsProtoP\001ZVgith"
-    "ub.com/yeonholee50/ampy-proto/gen/go/amp"
-    "y/corporate_actions/v1;corporate_actions"
-    "v1\242\002\003ACX\252\002\030Ampy.CorporateActions.V1\312\002\030Am"
-    "py\\CorporateActions\\V1\342\002$Ampy\\CorporateA"
-    "ctions\\V1\\GPBMetadata\352\002\032Ampy::CorporateA"
-    "ctions::V1b\006proto3"
+    "ActionR\007actionsB\214\002\n\035com.ampy.corporate_a"
+    "ctions.v1B\025CorporateActionsProtoP\001ZRgith"
+    "ub.com/AmpyFin/ampy-proto/gen/go/ampy/co"
+    "rporate_actions/v1;corporate_actionsv1\242\002"
+    "\003ACX\252\002\030Ampy.CorporateActions.V1\312\002\030Ampy\\C"
+    "orporateActions\\V1\342\002$Ampy\\CorporateActio"
+    "ns\\V1\\GPBMetadata\352\002\032Ampy::CorporateActio"
+    "ns::V1b\006proto3"
 };
 static const ::_pbi::DescriptorTable* PROTOBUF_NONNULL const
     descriptor_table_ampy_2fcorporate_5factions_2fv1_2fcorporate_5factions_2eproto_deps[2] = {
@@ -237,7 +237,7 @@ static ::absl::once_flag descriptor_table_ampy_2fcorporate_5factions_2fv1_2fcorp
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_ampy_2fcorporate_5factions_2fv1_2fcorporate_5factions_2eproto = {
     false,
     false,
-    1218,
+    1214,
     descriptor_table_protodef_ampy_2fcorporate_5factions_2fv1_2fcorporate_5factions_2eproto,
     "ampy/corporate_actions/v1/corporate_actions.proto",
     &descriptor_table_ampy_2fcorporate_5factions_2fv1_2fcorporate_5factions_2eproto_once,
