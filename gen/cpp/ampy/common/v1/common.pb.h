@@ -28,8 +28,8 @@
 #include "google/protobuf/message_lite.h"
 #include "google/protobuf/repeated_field.h"  // IWYU pragma: export
 #include "google/protobuf/extension_set.h"  // IWYU pragma: export
+#include "google/protobuf/generated_enum_reflection.h"
 #include "google/protobuf/unknown_field_set.h"
-#include "google/protobuf/timestamp.pb.h"
 // @@protoc_insertion_point(includes)
 
 // Must be included last.
@@ -56,6 +56,18 @@ extern const ::google::protobuf::internal::DescriptorTable descriptor_table_ampy
 namespace ampy {
 namespace common {
 namespace v1 {
+enum ActionType : int;
+extern const uint32_t ActionType_internal_data_[];
+enum AdjustmentPolicy : int;
+extern const uint32_t AdjustmentPolicy_internal_data_[];
+enum OrderType : int;
+extern const uint32_t OrderType_internal_data_[];
+enum Side : int;
+extern const uint32_t Side_internal_data_[];
+enum SignalType : int;
+extern const uint32_t SignalType_internal_data_[];
+enum TimeInForce : int;
+extern const uint32_t TimeInForce_internal_data_[];
 class Decimal;
 struct DecimalDefaultTypeInternal;
 extern DecimalDefaultTypeInternal _Decimal_default_instance_;
@@ -77,12 +89,260 @@ extern const ::google::protobuf::internal::ClassDataFull SecurityId_class_data_;
 }  // namespace ampy
 namespace google {
 namespace protobuf {
+template <>
+internal::EnumTraitsT<::ampy::common::v1::ActionType_internal_data_>
+    internal::EnumTraitsImpl::value<::ampy::common::v1::ActionType>;
+template <>
+internal::EnumTraitsT<::ampy::common::v1::AdjustmentPolicy_internal_data_>
+    internal::EnumTraitsImpl::value<::ampy::common::v1::AdjustmentPolicy>;
+template <>
+internal::EnumTraitsT<::ampy::common::v1::OrderType_internal_data_>
+    internal::EnumTraitsImpl::value<::ampy::common::v1::OrderType>;
+template <>
+internal::EnumTraitsT<::ampy::common::v1::Side_internal_data_>
+    internal::EnumTraitsImpl::value<::ampy::common::v1::Side>;
+template <>
+internal::EnumTraitsT<::ampy::common::v1::SignalType_internal_data_>
+    internal::EnumTraitsImpl::value<::ampy::common::v1::SignalType>;
+template <>
+internal::EnumTraitsT<::ampy::common::v1::TimeInForce_internal_data_>
+    internal::EnumTraitsImpl::value<::ampy::common::v1::TimeInForce>;
 }  // namespace protobuf
 }  // namespace google
 
 namespace ampy {
 namespace common {
 namespace v1 {
+enum AdjustmentPolicy : int {
+  ADJUSTMENT_POLICY_UNSPECIFIED = 0,
+  ADJUSTMENT_POLICY_RAW = 1,
+  ADJUSTMENT_POLICY_SPLIT_ONLY = 2,
+  ADJUSTMENT_POLICY_SPLIT_DIVIDEND = 3,
+  AdjustmentPolicy_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::min(),
+  AdjustmentPolicy_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::max(),
+};
+
+extern const uint32_t AdjustmentPolicy_internal_data_[];
+inline constexpr AdjustmentPolicy AdjustmentPolicy_MIN =
+    static_cast<AdjustmentPolicy>(0);
+inline constexpr AdjustmentPolicy AdjustmentPolicy_MAX =
+    static_cast<AdjustmentPolicy>(3);
+inline bool AdjustmentPolicy_IsValid(int value) {
+  return 0 <= value && value <= 3;
+}
+inline constexpr int AdjustmentPolicy_ARRAYSIZE = 3 + 1;
+const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL AdjustmentPolicy_descriptor();
+template <typename T>
+const ::std::string& AdjustmentPolicy_Name(T value) {
+  static_assert(::std::is_same<T, AdjustmentPolicy>::value ||
+                    ::std::is_integral<T>::value,
+                "Incorrect type passed to AdjustmentPolicy_Name().");
+  return AdjustmentPolicy_Name(static_cast<AdjustmentPolicy>(value));
+}
+template <>
+inline const ::std::string& AdjustmentPolicy_Name(AdjustmentPolicy value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<AdjustmentPolicy_descriptor, 0, 3>(
+      static_cast<int>(value));
+}
+inline bool AdjustmentPolicy_Parse(
+    ::absl::string_view name, AdjustmentPolicy* PROTOBUF_NONNULL value) {
+  return ::google::protobuf::internal::ParseNamedEnum<AdjustmentPolicy>(AdjustmentPolicy_descriptor(), name,
+                                           value);
+}
+enum Side : int {
+  SIDE_UNSPECIFIED = 0,
+  SIDE_BUY = 1,
+  SIDE_SELL = 2,
+  Side_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::min(),
+  Side_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::max(),
+};
+
+extern const uint32_t Side_internal_data_[];
+inline constexpr Side Side_MIN =
+    static_cast<Side>(0);
+inline constexpr Side Side_MAX =
+    static_cast<Side>(2);
+inline bool Side_IsValid(int value) {
+  return 0 <= value && value <= 2;
+}
+inline constexpr int Side_ARRAYSIZE = 2 + 1;
+const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL Side_descriptor();
+template <typename T>
+const ::std::string& Side_Name(T value) {
+  static_assert(::std::is_same<T, Side>::value ||
+                    ::std::is_integral<T>::value,
+                "Incorrect type passed to Side_Name().");
+  return Side_Name(static_cast<Side>(value));
+}
+template <>
+inline const ::std::string& Side_Name(Side value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<Side_descriptor, 0, 2>(
+      static_cast<int>(value));
+}
+inline bool Side_Parse(
+    ::absl::string_view name, Side* PROTOBUF_NONNULL value) {
+  return ::google::protobuf::internal::ParseNamedEnum<Side>(Side_descriptor(), name,
+                                           value);
+}
+enum OrderType : int {
+  ORDER_TYPE_UNSPECIFIED = 0,
+  ORDER_TYPE_MARKET = 1,
+  ORDER_TYPE_LIMIT = 2,
+  ORDER_TYPE_STOP = 3,
+  ORDER_TYPE_STOP_LIMIT = 4,
+  OrderType_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::min(),
+  OrderType_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::max(),
+};
+
+extern const uint32_t OrderType_internal_data_[];
+inline constexpr OrderType OrderType_MIN =
+    static_cast<OrderType>(0);
+inline constexpr OrderType OrderType_MAX =
+    static_cast<OrderType>(4);
+inline bool OrderType_IsValid(int value) {
+  return 0 <= value && value <= 4;
+}
+inline constexpr int OrderType_ARRAYSIZE = 4 + 1;
+const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL OrderType_descriptor();
+template <typename T>
+const ::std::string& OrderType_Name(T value) {
+  static_assert(::std::is_same<T, OrderType>::value ||
+                    ::std::is_integral<T>::value,
+                "Incorrect type passed to OrderType_Name().");
+  return OrderType_Name(static_cast<OrderType>(value));
+}
+template <>
+inline const ::std::string& OrderType_Name(OrderType value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<OrderType_descriptor, 0, 4>(
+      static_cast<int>(value));
+}
+inline bool OrderType_Parse(
+    ::absl::string_view name, OrderType* PROTOBUF_NONNULL value) {
+  return ::google::protobuf::internal::ParseNamedEnum<OrderType>(OrderType_descriptor(), name,
+                                           value);
+}
+enum TimeInForce : int {
+  TIME_IN_FORCE_UNSPECIFIED = 0,
+  TIME_IN_FORCE_DAY = 1,
+  TIME_IN_FORCE_GTC = 2,
+  TIME_IN_FORCE_IOC = 3,
+  TIME_IN_FORCE_FOK = 4,
+  TIME_IN_FORCE_GTT = 5,
+  TimeInForce_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::min(),
+  TimeInForce_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::max(),
+};
+
+extern const uint32_t TimeInForce_internal_data_[];
+inline constexpr TimeInForce TimeInForce_MIN =
+    static_cast<TimeInForce>(0);
+inline constexpr TimeInForce TimeInForce_MAX =
+    static_cast<TimeInForce>(5);
+inline bool TimeInForce_IsValid(int value) {
+  return 0 <= value && value <= 5;
+}
+inline constexpr int TimeInForce_ARRAYSIZE = 5 + 1;
+const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL TimeInForce_descriptor();
+template <typename T>
+const ::std::string& TimeInForce_Name(T value) {
+  static_assert(::std::is_same<T, TimeInForce>::value ||
+                    ::std::is_integral<T>::value,
+                "Incorrect type passed to TimeInForce_Name().");
+  return TimeInForce_Name(static_cast<TimeInForce>(value));
+}
+template <>
+inline const ::std::string& TimeInForce_Name(TimeInForce value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<TimeInForce_descriptor, 0, 5>(
+      static_cast<int>(value));
+}
+inline bool TimeInForce_Parse(
+    ::absl::string_view name, TimeInForce* PROTOBUF_NONNULL value) {
+  return ::google::protobuf::internal::ParseNamedEnum<TimeInForce>(TimeInForce_descriptor(), name,
+                                           value);
+}
+enum SignalType : int {
+  SIGNAL_TYPE_UNSPECIFIED = 0,
+  SIGNAL_TYPE_ALPHA = 1,
+  SIGNAL_TYPE_ACTION = 2,
+  SignalType_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::min(),
+  SignalType_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::max(),
+};
+
+extern const uint32_t SignalType_internal_data_[];
+inline constexpr SignalType SignalType_MIN =
+    static_cast<SignalType>(0);
+inline constexpr SignalType SignalType_MAX =
+    static_cast<SignalType>(2);
+inline bool SignalType_IsValid(int value) {
+  return 0 <= value && value <= 2;
+}
+inline constexpr int SignalType_ARRAYSIZE = 2 + 1;
+const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL SignalType_descriptor();
+template <typename T>
+const ::std::string& SignalType_Name(T value) {
+  static_assert(::std::is_same<T, SignalType>::value ||
+                    ::std::is_integral<T>::value,
+                "Incorrect type passed to SignalType_Name().");
+  return SignalType_Name(static_cast<SignalType>(value));
+}
+template <>
+inline const ::std::string& SignalType_Name(SignalType value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<SignalType_descriptor, 0, 2>(
+      static_cast<int>(value));
+}
+inline bool SignalType_Parse(
+    ::absl::string_view name, SignalType* PROTOBUF_NONNULL value) {
+  return ::google::protobuf::internal::ParseNamedEnum<SignalType>(SignalType_descriptor(), name,
+                                           value);
+}
+enum ActionType : int {
+  ACTION_TYPE_UNSPECIFIED = 0,
+  ACTION_TYPE_BUY = 1,
+  ACTION_TYPE_SELL = 2,
+  ACTION_TYPE_HOLD = 3,
+  ACTION_TYPE_CLOSE = 4,
+  ActionType_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::min(),
+  ActionType_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::max(),
+};
+
+extern const uint32_t ActionType_internal_data_[];
+inline constexpr ActionType ActionType_MIN =
+    static_cast<ActionType>(0);
+inline constexpr ActionType ActionType_MAX =
+    static_cast<ActionType>(4);
+inline bool ActionType_IsValid(int value) {
+  return 0 <= value && value <= 4;
+}
+inline constexpr int ActionType_ARRAYSIZE = 4 + 1;
+const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL ActionType_descriptor();
+template <typename T>
+const ::std::string& ActionType_Name(T value) {
+  static_assert(::std::is_same<T, ActionType>::value ||
+                    ::std::is_integral<T>::value,
+                "Incorrect type passed to ActionType_Name().");
+  return ActionType_Name(static_cast<ActionType>(value));
+}
+template <>
+inline const ::std::string& ActionType_Name(ActionType value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<ActionType_descriptor, 0, 4>(
+      static_cast<int>(value));
+}
+inline bool ActionType_Parse(
+    ::absl::string_view name, ActionType* PROTOBUF_NONNULL value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ActionType>(ActionType_descriptor(), name,
+                                           value);
+}
 
 // ===================================================================
 
@@ -1848,6 +2108,49 @@ inline void Meta::set_allocated_checksum(::std::string* PROTOBUF_NULLABLE value)
 }  // namespace common
 }  // namespace ampy
 
+
+namespace google {
+namespace protobuf {
+
+template <>
+struct is_proto_enum<::ampy::common::v1::AdjustmentPolicy> : std::true_type {};
+template <>
+inline const EnumDescriptor* PROTOBUF_NONNULL GetEnumDescriptor<::ampy::common::v1::AdjustmentPolicy>() {
+  return ::ampy::common::v1::AdjustmentPolicy_descriptor();
+}
+template <>
+struct is_proto_enum<::ampy::common::v1::Side> : std::true_type {};
+template <>
+inline const EnumDescriptor* PROTOBUF_NONNULL GetEnumDescriptor<::ampy::common::v1::Side>() {
+  return ::ampy::common::v1::Side_descriptor();
+}
+template <>
+struct is_proto_enum<::ampy::common::v1::OrderType> : std::true_type {};
+template <>
+inline const EnumDescriptor* PROTOBUF_NONNULL GetEnumDescriptor<::ampy::common::v1::OrderType>() {
+  return ::ampy::common::v1::OrderType_descriptor();
+}
+template <>
+struct is_proto_enum<::ampy::common::v1::TimeInForce> : std::true_type {};
+template <>
+inline const EnumDescriptor* PROTOBUF_NONNULL GetEnumDescriptor<::ampy::common::v1::TimeInForce>() {
+  return ::ampy::common::v1::TimeInForce_descriptor();
+}
+template <>
+struct is_proto_enum<::ampy::common::v1::SignalType> : std::true_type {};
+template <>
+inline const EnumDescriptor* PROTOBUF_NONNULL GetEnumDescriptor<::ampy::common::v1::SignalType>() {
+  return ::ampy::common::v1::SignalType_descriptor();
+}
+template <>
+struct is_proto_enum<::ampy::common::v1::ActionType> : std::true_type {};
+template <>
+inline const EnumDescriptor* PROTOBUF_NONNULL GetEnumDescriptor<::ampy::common::v1::ActionType>() {
+  return ::ampy::common::v1::ActionType_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 

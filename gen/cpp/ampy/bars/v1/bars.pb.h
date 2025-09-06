@@ -241,6 +241,7 @@ class Bar final : public ::google::protobuf::Message
     kVolumeFieldNumber = 9,
     kTradeCountFieldNumber = 10,
     kAdjustedFieldNumber = 11,
+    kAdjustmentPolicyFieldNumber = 17,
   };
   // string adjustment_policy_id = 12 [json_name = "adjustmentPolicyId"];
   void clear_adjustment_policy_id() ;
@@ -467,11 +468,21 @@ class Bar final : public ::google::protobuf::Message
   void _internal_set_adjusted(bool value);
 
   public:
+  // .ampy.common.v1.AdjustmentPolicy adjustment_policy = 17 [json_name = "adjustmentPolicy"];
+  void clear_adjustment_policy() ;
+  ::ampy::common::v1::AdjustmentPolicy adjustment_policy() const;
+  void set_adjustment_policy(::ampy::common::v1::AdjustmentPolicy value);
+
+  private:
+  ::ampy::common::v1::AdjustmentPolicy _internal_adjustment_policy() const;
+  void _internal_set_adjustment_policy(::ampy::common::v1::AdjustmentPolicy value);
+
+  public:
   // @@protoc_insertion_point(class_scope:ampy.bars.v1.Bar)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<4, 16,
+  static const ::google::protobuf::internal::TcParseTable<5, 17,
                                    12, 61,
                                    2>
       _table_;
@@ -509,6 +520,7 @@ class Bar final : public ::google::protobuf::Message
     ::int64_t volume_;
     ::int64_t trade_count_;
     bool adjusted_;
+    int adjustment_policy_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -1609,6 +1621,30 @@ inline void Bar::set_allocated_adjustment_policy_id(::std::string* PROTOBUF_NULL
     _impl_.adjustment_policy_id_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:ampy.bars.v1.Bar.adjustment_policy_id)
+}
+
+// .ampy.common.v1.AdjustmentPolicy adjustment_policy = 17 [json_name = "adjustmentPolicy"];
+inline void Bar::clear_adjustment_policy() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.adjustment_policy_ = 0;
+  _impl_._has_bits_[0] &= ~0x00010000U;
+}
+inline ::ampy::common::v1::AdjustmentPolicy Bar::adjustment_policy() const {
+  // @@protoc_insertion_point(field_get:ampy.bars.v1.Bar.adjustment_policy)
+  return _internal_adjustment_policy();
+}
+inline void Bar::set_adjustment_policy(::ampy::common::v1::AdjustmentPolicy value) {
+  _internal_set_adjustment_policy(value);
+  _impl_._has_bits_[0] |= 0x00010000U;
+  // @@protoc_insertion_point(field_set:ampy.bars.v1.Bar.adjustment_policy)
+}
+inline ::ampy::common::v1::AdjustmentPolicy Bar::_internal_adjustment_policy() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::ampy::common::v1::AdjustmentPolicy>(_impl_.adjustment_policy_);
+}
+inline void Bar::_internal_set_adjustment_policy(::ampy::common::v1::AdjustmentPolicy value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.adjustment_policy_ = value;
 }
 
 // .google.protobuf.Timestamp event_time = 13 [json_name = "eventTime"];

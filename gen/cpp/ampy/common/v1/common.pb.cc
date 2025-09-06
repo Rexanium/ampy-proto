@@ -159,8 +159,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 }  // namespace v1
 }  // namespace common
 }  // namespace ampy
-static constexpr const ::_pb::EnumDescriptor *PROTOBUF_NONNULL *PROTOBUF_NULLABLE
-    file_level_enum_descriptors_ampy_2fcommon_2fv1_2fcommon_2eproto = nullptr;
+static const ::_pb::EnumDescriptor* PROTOBUF_NONNULL
+    file_level_enum_descriptors_ampy_2fcommon_2fv1_2fcommon_2eproto[6];
 static constexpr const ::_pb::ServiceDescriptor *PROTOBUF_NONNULL *PROTOBUF_NULLABLE
     file_level_service_descriptors_ampy_2fcommon_2fv1_2fcommon_2eproto = nullptr;
 const ::uint32_t
@@ -222,37 +222,51 @@ static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
 const char descriptor_table_protodef_ampy_2fcommon_2fv1_2fcommon_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n\033ampy/common/v1/common.proto\022\016ampy.comm"
-    "on.v1\032\037google/protobuf/timestamp.proto\"7"
-    "\n\007Decimal\022\026\n\006scaled\030\001 \001(\022R\006scaled\022\024\n\005sca"
-    "le\030\002 \001(\005R\005scale\"]\n\005Money\022/\n\006amount\030\001 \001(\013"
-    "2\027.ampy.common.v1.DecimalR\006amount\022#\n\rcur"
-    "rency_code\030\002 \001(\tR\014currencyCode\"^\n\nSecuri"
-    "tyId\022\026\n\006symbol\030\001 \001(\tR\006symbol\022\020\n\003mic\030\002 \001("
-    "\tR\003mic\022\022\n\004figi\030\003 \001(\tR\004figi\022\022\n\004isin\030\004 \001(\t"
-    "R\004isin\"\224\001\n\004Meta\022\025\n\006run_id\030\001 \001(\tR\005runId\022\026"
-    "\n\006source\030\002 \001(\tR\006source\022\032\n\010producer\030\003 \001(\t"
-    "R\010producer\022%\n\016schema_version\030\004 \001(\tR\rsche"
-    "maVersion\022\032\n\010checksum\030\005 \001(\tR\010checksumB\275\001"
-    "\n\022com.ampy.common.v1B\013CommonProtoP\001Z@git"
-    "hub.com/yeonholee50/ampy-proto/gen/go/am"
-    "py/common/v1;commonv1\242\002\003ACX\252\002\016Ampy.Commo"
-    "n.V1\312\002\016Ampy\\Common\\V1\342\002\032Ampy\\Common\\V1\\G"
-    "PBMetadata\352\002\020Ampy::Common::V1b\006proto3"
-};
-static const ::_pbi::DescriptorTable* PROTOBUF_NONNULL const
-    descriptor_table_ampy_2fcommon_2fv1_2fcommon_2eproto_deps[1] = {
-        &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
+    "on.v1\"7\n\007Decimal\022\026\n\006scaled\030\001 \001(\022R\006scaled"
+    "\022\024\n\005scale\030\002 \001(\005R\005scale\"]\n\005Money\022/\n\006amoun"
+    "t\030\001 \001(\0132\027.ampy.common.v1.DecimalR\006amount"
+    "\022#\n\rcurrency_code\030\002 \001(\tR\014currencyCode\"^\n"
+    "\nSecurityId\022\026\n\006symbol\030\001 \001(\tR\006symbol\022\020\n\003m"
+    "ic\030\002 \001(\tR\003mic\022\022\n\004figi\030\003 \001(\tR\004figi\022\022\n\004isi"
+    "n\030\004 \001(\tR\004isin\"\224\001\n\004Meta\022\025\n\006run_id\030\001 \001(\tR\005"
+    "runId\022\026\n\006source\030\002 \001(\tR\006source\022\032\n\010produce"
+    "r\030\003 \001(\tR\010producer\022%\n\016schema_version\030\004 \001("
+    "\tR\rschemaVersion\022\032\n\010checksum\030\005 \001(\tR\010chec"
+    "ksum*\230\001\n\020AdjustmentPolicy\022!\n\035ADJUSTMENT_"
+    "POLICY_UNSPECIFIED\020\000\022\031\n\025ADJUSTMENT_POLIC"
+    "Y_RAW\020\001\022 \n\034ADJUSTMENT_POLICY_SPLIT_ONLY\020"
+    "\002\022$\n ADJUSTMENT_POLICY_SPLIT_DIVIDEND\020\003*"
+    "9\n\004Side\022\024\n\020SIDE_UNSPECIFIED\020\000\022\014\n\010SIDE_BU"
+    "Y\020\001\022\r\n\tSIDE_SELL\020\002*\204\001\n\tOrderType\022\032\n\026ORDE"
+    "R_TYPE_UNSPECIFIED\020\000\022\025\n\021ORDER_TYPE_MARKE"
+    "T\020\001\022\024\n\020ORDER_TYPE_LIMIT\020\002\022\023\n\017ORDER_TYPE_"
+    "STOP\020\003\022\031\n\025ORDER_TYPE_STOP_LIMIT\020\004*\237\001\n\013Ti"
+    "meInForce\022\035\n\031TIME_IN_FORCE_UNSPECIFIED\020\000"
+    "\022\025\n\021TIME_IN_FORCE_DAY\020\001\022\025\n\021TIME_IN_FORCE"
+    "_GTC\020\002\022\025\n\021TIME_IN_FORCE_IOC\020\003\022\025\n\021TIME_IN"
+    "_FORCE_FOK\020\004\022\025\n\021TIME_IN_FORCE_GTT\020\005*X\n\nS"
+    "ignalType\022\033\n\027SIGNAL_TYPE_UNSPECIFIED\020\000\022\025"
+    "\n\021SIGNAL_TYPE_ALPHA\020\001\022\026\n\022SIGNAL_TYPE_ACT"
+    "ION\020\002*\201\001\n\nActionType\022\033\n\027ACTION_TYPE_UNSP"
+    "ECIFIED\020\000\022\023\n\017ACTION_TYPE_BUY\020\001\022\024\n\020ACTION"
+    "_TYPE_SELL\020\002\022\024\n\020ACTION_TYPE_HOLD\020\003\022\025\n\021AC"
+    "TION_TYPE_CLOSE\020\004B\275\001\n\022com.ampy.common.v1"
+    "B\013CommonProtoP\001Z@github.com/yeonholee50/"
+    "ampy-proto/gen/go/ampy/common/v1;commonv"
+    "1\242\002\003ACX\252\002\016Ampy.Common.V1\312\002\016Ampy\\Common\\V"
+    "1\342\002\032Ampy\\Common\\V1\\GPBMetadata\352\002\020Ampy::C"
+    "ommon::V1b\006proto3"
 };
 static ::absl::once_flag descriptor_table_ampy_2fcommon_2fv1_2fcommon_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_ampy_2fcommon_2fv1_2fcommon_2eproto = {
     false,
     false,
-    677,
+    1377,
     descriptor_table_protodef_ampy_2fcommon_2fv1_2fcommon_2eproto,
     "ampy/common/v1/common.proto",
     &descriptor_table_ampy_2fcommon_2fv1_2fcommon_2eproto_once,
-    descriptor_table_ampy_2fcommon_2fv1_2fcommon_2eproto_deps,
-    1,
+    nullptr,
+    0,
     4,
     schemas,
     file_default_instances,
@@ -263,6 +277,42 @@ PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_ampy_2fcommon_
 namespace ampy {
 namespace common {
 namespace v1 {
+const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL AdjustmentPolicy_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_ampy_2fcommon_2fv1_2fcommon_2eproto);
+  return file_level_enum_descriptors_ampy_2fcommon_2fv1_2fcommon_2eproto[0];
+}
+PROTOBUF_CONSTINIT const uint32_t AdjustmentPolicy_internal_data_[] = {
+    262144u, 0u, };
+const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL Side_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_ampy_2fcommon_2fv1_2fcommon_2eproto);
+  return file_level_enum_descriptors_ampy_2fcommon_2fv1_2fcommon_2eproto[1];
+}
+PROTOBUF_CONSTINIT const uint32_t Side_internal_data_[] = {
+    196608u, 0u, };
+const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL OrderType_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_ampy_2fcommon_2fv1_2fcommon_2eproto);
+  return file_level_enum_descriptors_ampy_2fcommon_2fv1_2fcommon_2eproto[2];
+}
+PROTOBUF_CONSTINIT const uint32_t OrderType_internal_data_[] = {
+    327680u, 0u, };
+const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL TimeInForce_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_ampy_2fcommon_2fv1_2fcommon_2eproto);
+  return file_level_enum_descriptors_ampy_2fcommon_2fv1_2fcommon_2eproto[3];
+}
+PROTOBUF_CONSTINIT const uint32_t TimeInForce_internal_data_[] = {
+    393216u, 0u, };
+const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL SignalType_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_ampy_2fcommon_2fv1_2fcommon_2eproto);
+  return file_level_enum_descriptors_ampy_2fcommon_2fv1_2fcommon_2eproto[4];
+}
+PROTOBUF_CONSTINIT const uint32_t SignalType_internal_data_[] = {
+    196608u, 0u, };
+const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL ActionType_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_ampy_2fcommon_2fv1_2fcommon_2eproto);
+  return file_level_enum_descriptors_ampy_2fcommon_2fv1_2fcommon_2eproto[5];
+}
+PROTOBUF_CONSTINIT const uint32_t ActionType_internal_data_[] = {
+    327680u, 0u, };
 // ===================================================================
 
 class Decimal::_Internal {

@@ -48,7 +48,8 @@ inline constexpr Bar::Impl_::Impl_(
         meta_{nullptr},
         volume_{::int64_t{0}},
         trade_count_{::int64_t{0}},
-        adjusted_{false} {}
+        adjusted_{false},
+        adjustment_policy_{static_cast< ::ampy::common::v1::AdjustmentPolicy >(0)} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR Bar::Bar(::_pbi::ConstantInitialized)
@@ -106,7 +107,7 @@ const ::uint32_t
         protodesc_cold) = {
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::ampy::bars::v1::Bar, _impl_._has_bits_),
-        19, // hasbit index offset
+        20, // hasbit index offset
         PROTOBUF_FIELD_OFFSET(::ampy::bars::v1::Bar, _impl_.security_),
         PROTOBUF_FIELD_OFFSET(::ampy::bars::v1::Bar, _impl_.start_),
         PROTOBUF_FIELD_OFFSET(::ampy::bars::v1::Bar, _impl_.end_),
@@ -119,6 +120,7 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::ampy::bars::v1::Bar, _impl_.trade_count_),
         PROTOBUF_FIELD_OFFSET(::ampy::bars::v1::Bar, _impl_.adjusted_),
         PROTOBUF_FIELD_OFFSET(::ampy::bars::v1::Bar, _impl_.adjustment_policy_id_),
+        PROTOBUF_FIELD_OFFSET(::ampy::bars::v1::Bar, _impl_.adjustment_policy_),
         PROTOBUF_FIELD_OFFSET(::ampy::bars::v1::Bar, _impl_.event_time_),
         PROTOBUF_FIELD_OFFSET(::ampy::bars::v1::Bar, _impl_.ingest_time_),
         PROTOBUF_FIELD_OFFSET(::ampy::bars::v1::Bar, _impl_.as_of_),
@@ -135,6 +137,7 @@ const ::uint32_t
         14,
         15,
         0,
+        16,
         9,
         10,
         11,
@@ -146,7 +149,7 @@ const ::uint32_t
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, sizeof(::ampy::bars::v1::Bar)},
-        {35, sizeof(::ampy::bars::v1::BarBatch)},
+        {37, sizeof(::ampy::bars::v1::BarBatch)},
 };
 static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::ampy::bars::v1::_Bar_default_instance_._instance,
@@ -156,7 +159,7 @@ const char descriptor_table_protodef_ampy_2fbars_2fv1_2fbars_2eproto[] ABSL_ATTR
     protodesc_cold) = {
     "\n\027ampy/bars/v1/bars.proto\022\014ampy.bars.v1\032"
     "\037google/protobuf/timestamp.proto\032\033ampy/c"
-    "ommon/v1/common.proto\"\330\005\n\003Bar\0226\n\010securit"
+    "ommon/v1/common.proto\"\247\006\n\003Bar\0226\n\010securit"
     "y\030\001 \001(\0132\032.ampy.common.v1.SecurityIdR\010sec"
     "urity\0220\n\005start\030\002 \001(\0132\032.google.protobuf.T"
     "imestampR\005start\022,\n\003end\030\003 \001(\0132\032.google.pr"
@@ -169,18 +172,20 @@ const char descriptor_table_protodef_ampy_2fbars_2fv1_2fbars_2eproto[] ABSL_ATTR
     "R\004vwap\022\026\n\006volume\030\t \001(\003R\006volume\022\037\n\013trade_"
     "count\030\n \001(\003R\ntradeCount\022\032\n\010adjusted\030\013 \001("
     "\010R\010adjusted\0220\n\024adjustment_policy_id\030\014 \001("
-    "\tR\022adjustmentPolicyId\0229\n\nevent_time\030\r \001("
-    "\0132\032.google.protobuf.TimestampR\teventTime"
-    "\022;\n\013ingest_time\030\016 \001(\0132\032.google.protobuf."
-    "TimestampR\ningestTime\022/\n\005as_of\030\017 \001(\0132\032.g"
-    "oogle.protobuf.TimestampR\004asOf\022(\n\004meta\030\020"
-    " \001(\0132\024.ampy.common.v1.MetaR\004meta\"1\n\010BarB"
-    "atch\022%\n\004bars\030\001 \003(\0132\021.ampy.bars.v1.BarR\004b"
-    "arsB\255\001\n\020com.ampy.bars.v1B\tBarsProtoP\001Z<g"
-    "ithub.com/yeonholee50/ampy-proto/gen/go/"
-    "ampy/bars/v1;barsv1\242\002\003ABX\252\002\014Ampy.Bars.V1"
-    "\312\002\014Ampy\\Bars\\V1\342\002\030Ampy\\Bars\\V1\\GPBMetada"
-    "ta\352\002\016Ampy::Bars::V1b\006proto3"
+    "\tR\022adjustmentPolicyId\022M\n\021adjustment_poli"
+    "cy\030\021 \001(\0162 .ampy.common.v1.AdjustmentPoli"
+    "cyR\020adjustmentPolicy\0229\n\nevent_time\030\r \001(\013"
+    "2\032.google.protobuf.TimestampR\teventTime\022"
+    ";\n\013ingest_time\030\016 \001(\0132\032.google.protobuf.T"
+    "imestampR\ningestTime\022/\n\005as_of\030\017 \001(\0132\032.go"
+    "ogle.protobuf.TimestampR\004asOf\022(\n\004meta\030\020 "
+    "\001(\0132\024.ampy.common.v1.MetaR\004meta\"1\n\010BarBa"
+    "tch\022%\n\004bars\030\001 \003(\0132\021.ampy.bars.v1.BarR\004ba"
+    "rsB\255\001\n\020com.ampy.bars.v1B\tBarsProtoP\001Z<gi"
+    "thub.com/yeonholee50/ampy-proto/gen/go/a"
+    "mpy/bars/v1;barsv1\242\002\003ABX\252\002\014Ampy.Bars.V1\312"
+    "\002\014Ampy\\Bars\\V1\342\002\030Ampy\\Bars\\V1\\GPBMetadat"
+    "a\352\002\016Ampy::Bars::V1b\006proto3"
 };
 static const ::_pbi::DescriptorTable* PROTOBUF_NONNULL const
     descriptor_table_ampy_2fbars_2fv1_2fbars_2eproto_deps[2] = {
@@ -191,7 +196,7 @@ static ::absl::once_flag descriptor_table_ampy_2fbars_2fv1_2fbars_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_ampy_2fbars_2fv1_2fbars_2eproto = {
     false,
     false,
-    1067,
+    1146,
     descriptor_table_protodef_ampy_2fbars_2fv1_2fbars_2eproto,
     "ampy/bars/v1/bars.proto",
     &descriptor_table_ampy_2fbars_2fv1_2fbars_2eproto_once,
@@ -348,9 +353,9 @@ Bar::Bar(
                offsetof(Impl_, volume_),
            reinterpret_cast<const char *>(&from._impl_) +
                offsetof(Impl_, volume_),
-           offsetof(Impl_, adjusted_) -
+           offsetof(Impl_, adjustment_policy_) -
                offsetof(Impl_, volume_) +
-               sizeof(Impl_::adjusted_));
+               sizeof(Impl_::adjustment_policy_));
 
   // @@protoc_insertion_point(copy_constructor:ampy.bars.v1.Bar)
 }
@@ -365,9 +370,9 @@ inline void Bar::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, security_),
            0,
-           offsetof(Impl_, adjusted_) -
+           offsetof(Impl_, adjustment_policy_) -
                offsetof(Impl_, security_) +
-               sizeof(Impl_::adjusted_));
+               sizeof(Impl_::adjustment_policy_));
 }
 Bar::~Bar() {
   // @@protoc_insertion_point(destructor:ampy.bars.v1.Bar)
@@ -439,16 +444,16 @@ Bar::GetClassData() const {
   return Bar_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 16, 12, 61, 2>
+const ::_pbi::TcParseTable<5, 17, 12, 61, 2>
 Bar::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(Bar, _impl_._has_bits_),
     0, // no _extensions_
-    16, 120,  // max_field_number, fast_idx_mask
+    17, 248,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294901760,  // skipmap
+    4294836224,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    16,  // num_field_entries
+    17,  // num_field_entries
     12,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     Bar_class_data_.base(),
@@ -458,9 +463,7 @@ Bar::_table_ = {
     ::_pbi::TcParser::GetTable<::ampy::bars::v1::Bar>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // .ampy.common.v1.Meta meta = 16 [json_name = "meta"];
-    {::_pbi::TcParser::FastMtS2,
-     {386, 12, 11, PROTOBUF_FIELD_OFFSET(Bar, _impl_.meta_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // .ampy.common.v1.SecurityId security = 1 [json_name = "security"];
     {::_pbi::TcParser::FastMtS1,
      {10, 1, 0, PROTOBUF_FIELD_OFFSET(Bar, _impl_.security_)}},
@@ -506,6 +509,26 @@ Bar::_table_ = {
     // .google.protobuf.Timestamp as_of = 15 [json_name = "asOf"];
     {::_pbi::TcParser::FastMtS1,
      {122, 11, 10, PROTOBUF_FIELD_OFFSET(Bar, _impl_.as_of_)}},
+    // .ampy.common.v1.Meta meta = 16 [json_name = "meta"];
+    {::_pbi::TcParser::FastMtS2,
+     {386, 12, 11, PROTOBUF_FIELD_OFFSET(Bar, _impl_.meta_)}},
+    // .ampy.common.v1.AdjustmentPolicy adjustment_policy = 17 [json_name = "adjustmentPolicy"];
+    {::_pbi::TcParser::FastV32S2,
+     {392, 16, 0, PROTOBUF_FIELD_OFFSET(Bar, _impl_.adjustment_policy_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
@@ -541,6 +564,8 @@ Bar::_table_ = {
     {PROTOBUF_FIELD_OFFSET(Bar, _impl_.as_of_), _Internal::kHasBitsOffset + 11, 10, (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
     // .ampy.common.v1.Meta meta = 16 [json_name = "meta"];
     {PROTOBUF_FIELD_OFFSET(Bar, _impl_.meta_), _Internal::kHasBitsOffset + 12, 11, (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .ampy.common.v1.AdjustmentPolicy adjustment_policy = 17 [json_name = "adjustmentPolicy"];
+    {PROTOBUF_FIELD_OFFSET(Bar, _impl_.adjustment_policy_), _Internal::kHasBitsOffset + 16, 0, (0 | ::_fl::kFcOptional | ::_fl::kOpenEnum)},
   }},
   {{
       {::_pbi::TcParser::GetTable<::ampy::common::v1::SecurityId>()},
@@ -630,6 +655,7 @@ PROTOBUF_NOINLINE void Bar::Clear() {
         reinterpret_cast<char*>(&_impl_.adjusted_) -
         reinterpret_cast<char*>(&_impl_.volume_)) + sizeof(_impl_.adjusted_));
   }
+  _impl_.adjustment_policy_ = 0;
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -774,6 +800,15 @@ PROTOBUF_NOINLINE void Bar::Clear() {
         stream);
   }
 
+  // .ampy.common.v1.AdjustmentPolicy adjustment_policy = 17 [json_name = "adjustmentPolicy"];
+  if ((cached_has_bits & 0x00010000U) != 0) {
+    if (this_._internal_adjustment_policy() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteEnumToArray(
+          17, this_._internal_adjustment_policy(), target);
+    }
+  }
+
   if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -887,6 +922,15 @@ PROTOBUF_NOINLINE void Bar::Clear() {
     if ((cached_has_bits & 0x00008000U) != 0) {
       if (this_._internal_adjusted() != 0) {
         total_size += 2;
+      }
+    }
+  }
+   {
+    // .ampy.common.v1.AdjustmentPolicy adjustment_policy = 17 [json_name = "adjustmentPolicy"];
+    if ((cached_has_bits & 0x00010000U) != 0) {
+      if (this_._internal_adjustment_policy() != 0) {
+        total_size += 2 +
+                      ::_pbi::WireFormatLite::EnumSize(this_._internal_adjustment_policy());
       }
     }
   }
@@ -1031,6 +1075,11 @@ void Bar::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::pro
       }
     }
   }
+  if ((cached_has_bits & 0x00010000U) != 0) {
+    if (from._internal_adjustment_policy() != 0) {
+      _this->_impl_.adjustment_policy_ = from._impl_.adjustment_policy_;
+    }
+  }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1051,8 +1100,8 @@ void Bar::InternalSwap(Bar* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.adjustment_policy_id_, &other->_impl_.adjustment_policy_id_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Bar, _impl_.adjusted_)
-      + sizeof(Bar::_impl_.adjusted_)
+      PROTOBUF_FIELD_OFFSET(Bar, _impl_.adjustment_policy_)
+      + sizeof(Bar::_impl_.adjustment_policy_)
       - PROTOBUF_FIELD_OFFSET(Bar, _impl_.security_)>(
           reinterpret_cast<char*>(&_impl_.security_),
           reinterpret_cast<char*>(&other->_impl_.security_));

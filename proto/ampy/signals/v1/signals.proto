@@ -1,0 +1,29 @@
+syntax = "proto3";
+package ampy.signals.v1;
+
+option csharp_namespace = "Ampy.Signals.V1";
+option java_multiple_files = true;
+option java_package = "dev.ampy.signals.v1";
+option objc_class_prefix = "AmpySigV1";
+
+import "google/protobuf/timestamp.proto";
+import "ampy/common/v1/common.proto";
+
+message Signal {
+  ampy.common.v1.SecurityId security = 1;
+  ampy.common.v1.SignalType type = 2;
+  string model_id = 3;       // e.g., "hyper@2025-09-05"
+  string horizon = 4;        // e.g., "5d"
+  google.protobuf.Timestamp generated_at = 5;
+  google.protobuf.Timestamp expires_at = 6;
+  // Payload
+  oneof value {
+    ampy.common.v1.Decimal score = 7;                // type = ALPHA
+    ampy.common.v1.ActionType action = 8;            // type = ACTION
+  }
+  ampy.common.v1.Meta meta = 9;
+}
+
+message SignalBatch {
+  repeated Signal signals = 1;
+}

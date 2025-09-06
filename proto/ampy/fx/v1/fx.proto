@@ -1,0 +1,28 @@
+syntax = "proto3";
+package ampy.fx.v1;
+
+option csharp_namespace = "Ampy.Fx.V1";
+option java_multiple_files = true;
+option java_package = "dev.ampy.fx.v1";
+option objc_class_prefix = "AmpyFxV1";
+
+import "google/protobuf/timestamp.proto";
+import "ampy/common/v1/common.proto";
+
+message Pair {
+  string base = 1;  // e.g., "USD"
+  string quote = 2; // e.g., "JPY"
+}
+
+message FxRate {
+  Pair pair = 1;
+  ampy.common.v1.Decimal bid = 2;
+  ampy.common.v1.Decimal ask = 3;
+  ampy.common.v1.Decimal mid = 4;
+  google.protobuf.Timestamp as_of = 5;
+  ampy.common.v1.Meta meta = 6;
+}
+
+message FxRateBatch {
+  repeated FxRate rates = 1;
+}

@@ -1,0 +1,30 @@
+syntax = "proto3";
+package ampy.orders.v1;
+
+option csharp_namespace = "Ampy.Orders.V1";
+option java_multiple_files = true;
+option java_package = "dev.ampy.orders.v1";
+option objc_class_prefix = "AmpyOrdV1";
+
+import "google/protobuf/timestamp.proto";
+import "ampy/common/v1/common.proto";
+
+message OrderRequest {
+  string account_id = 1;
+  string client_order_id = 2;               // stable id for dedupe
+  ampy.common.v1.SecurityId security = 3;
+  ampy.common.v1.Side side = 4;
+  ampy.common.v1.OrderType order_type = 5;
+  ampy.common.v1.TimeInForce tif = 6;
+  ampy.common.v1.Decimal quantity = 7;      // shares/contracts; use scale for fractional
+  ampy.common.v1.Decimal limit_price = 8;   // required for LIMIT/STOP_LIMIT
+  ampy.common.v1.Decimal stop_price = 9;    // required for STOP/STOP_LIMIT
+  string venue = 10;                        // broker/venue identifier
+  string strategy_tag = 11;                 // e.g., "hyper"
+  google.protobuf.Timestamp created_at = 12;
+  ampy.common.v1.Meta meta = 13;
+}
+
+message OrderRequestBatch {
+  repeated OrderRequest orders = 1;
+}

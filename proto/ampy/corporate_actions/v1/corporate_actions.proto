@@ -1,0 +1,37 @@
+syntax = "proto3";
+package ampy.corporate_actions.v1;
+
+option csharp_namespace = "Ampy.CorporateActions.V1";
+option java_multiple_files = true;
+option java_package = "dev.ampy.corporate_actions.v1";
+option objc_class_prefix = "AmpyCAV1";
+
+import "google/protobuf/timestamp.proto";
+import "ampy/common/v1/common.proto";
+
+message SplitAction {
+  ampy.common.v1.SecurityId security = 1;
+  int32 ratio_numerator = 2;
+  int32 ratio_denominator = 3;
+  google.protobuf.Timestamp ex_date = 4;
+  ampy.common.v1.Meta meta = 5;
+}
+
+message DividendAction {
+  ampy.common.v1.SecurityId security = 1;
+  ampy.common.v1.Money cash_amount = 2;
+  google.protobuf.Timestamp ex_date = 3;
+  google.protobuf.Timestamp pay_date = 4;
+  ampy.common.v1.Meta meta = 5;
+}
+
+message CorporateAction {
+  oneof action {
+    SplitAction split = 1;
+    DividendAction dividend = 2;
+  }
+}
+
+message CorporateActionBatch {
+  repeated CorporateAction actions = 1;
+}

@@ -1,0 +1,26 @@
+syntax = "proto3";
+package ampy.fills.v1;
+
+option csharp_namespace = "Ampy.Fills.V1";
+option java_multiple_files = true;
+option java_package = "dev.ampy.fills.v1";
+option objc_class_prefix = "AmpyFillV1";
+
+import "google/protobuf/timestamp.proto";
+import "ampy/common/v1/common.proto";
+
+message FillEvent {
+  string account_id = 1;
+  string client_order_id = 2;
+  string broker_order_id = 3;
+  ampy.common.v1.SecurityId security = 4;
+  ampy.common.v1.Decimal price = 5;
+  ampy.common.v1.Decimal quantity = 6;
+  string venue = 7;
+  google.protobuf.Timestamp event_time = 8;
+  ampy.common.v1.Meta meta = 9;
+}
+
+message FillBatch {
+  repeated FillEvent fills = 1;
+}

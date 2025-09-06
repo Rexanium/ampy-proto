@@ -1,0 +1,30 @@
+syntax = "proto3";
+package ampy.fundamentals.v1;
+
+option csharp_namespace = "Ampy.Fundamentals.V1";
+option java_multiple_files = true;
+option java_package = "dev.ampy.fundamentals.v1";
+option objc_class_prefix = "AmpyFundV1";
+
+import "google/protobuf/timestamp.proto";
+import "ampy/common/v1/common.proto";
+
+message LineItem {
+  string key = 1; // e.g., "revenue", "net_income", "eps_basic"
+  ampy.common.v1.Decimal value = 2;
+  string currency_code = 3; // ISO-4217; required for monetary lines
+  google.protobuf.Timestamp period_start = 4;
+  google.protobuf.Timestamp period_end = 5;
+}
+
+message FundamentalsSnapshot {
+  ampy.common.v1.SecurityId security = 1;
+  repeated LineItem lines = 2;
+  string source = 3; // e.g., tiingo, yfinance
+  google.protobuf.Timestamp as_of = 4;
+  ampy.common.v1.Meta meta = 5;
+}
+
+message FundamentalsBatch {
+  repeated FundamentalsSnapshot snapshots = 1;
+}

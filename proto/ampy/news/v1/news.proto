@@ -1,0 +1,27 @@
+syntax = "proto3";
+package ampy.news.v1;
+
+option csharp_namespace = "Ampy.News.V1";
+option java_multiple_files = true;
+option java_package = "dev.ampy.news.v1";
+option objc_class_prefix = "AmpyNewsV1";
+
+import "google/protobuf/timestamp.proto";
+import "ampy/common/v1/common.proto";
+
+message NewsItem {
+  string id = 1;         // stable dedupe id, e.g., "marketbeat:2025-09-05:amzn-..."
+  string source = 2;     // "marketbeat", "rss", etc.
+  string url = 3;
+  string headline = 4;
+  string body = 5;       // may be truncated by producer; consumers should handle
+  repeated string tickers = 6;
+  int32 sentiment_score_bp = 7; // basis points, [-10000,10000] optional
+  google.protobuf.Timestamp published_at = 8;
+  google.protobuf.Timestamp ingest_time = 9;
+  ampy.common.v1.Meta meta = 10;
+}
+
+message NewsBatch {
+  repeated NewsItem items = 1;
+}

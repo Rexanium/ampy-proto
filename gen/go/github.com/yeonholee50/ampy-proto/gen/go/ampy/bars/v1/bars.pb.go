@@ -40,7 +40,9 @@ type Bar struct {
 	Volume             int64  `protobuf:"varint,9,opt,name=volume,proto3" json:"volume,omitempty"`
 	TradeCount         int64  `protobuf:"varint,10,opt,name=trade_count,json=tradeCount,proto3" json:"trade_count,omitempty"`
 	Adjusted           bool   `protobuf:"varint,11,opt,name=adjusted,proto3" json:"adjusted,omitempty"`
-	AdjustmentPolicyId string `protobuf:"bytes,12,opt,name=adjustment_policy_id,json=adjustmentPolicyId,proto3" json:"adjustment_policy_id,omitempty"`
+	AdjustmentPolicyId string `protobuf:"bytes,12,opt,name=adjustment_policy_id,json=adjustmentPolicyId,proto3" json:"adjustment_policy_id,omitempty"` // legacy string id
+	// Preferred enum policy (new additive field, non-breaking).
+	AdjustmentPolicy v1.AdjustmentPolicy `protobuf:"varint,17,opt,name=adjustment_policy,json=adjustmentPolicy,proto3,enum=ampy.common.v1.AdjustmentPolicy" json:"adjustment_policy,omitempty"`
 	// Timestamps (UTC). event_time should be the bar close timestamp.
 	EventTime     *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=event_time,json=eventTime,proto3" json:"event_time,omitempty"`
 	IngestTime    *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=ingest_time,json=ingestTime,proto3" json:"ingest_time,omitempty"`
@@ -164,6 +166,13 @@ func (x *Bar) GetAdjustmentPolicyId() string {
 	return ""
 }
 
+func (x *Bar) GetAdjustmentPolicy() v1.AdjustmentPolicy {
+	if x != nil {
+		return x.AdjustmentPolicy
+	}
+	return v1.AdjustmentPolicy(0)
+}
+
 func (x *Bar) GetEventTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EventTime
@@ -241,7 +250,7 @@ var File_ampy_bars_v1_bars_proto protoreflect.FileDescriptor
 
 const file_ampy_bars_v1_bars_proto_rawDesc = "" +
 	"\n" +
-	"\x17ampy/bars/v1/bars.proto\x12\fampy.bars.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bampy/common/v1/common.proto\"\xd8\x05\n" +
+	"\x17ampy/bars/v1/bars.proto\x12\fampy.bars.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bampy/common/v1/common.proto\"\xa7\x06\n" +
 	"\x03Bar\x126\n" +
 	"\bsecurity\x18\x01 \x01(\v2\x1a.ampy.common.v1.SecurityIdR\bsecurity\x120\n" +
 	"\x05start\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x05start\x12,\n" +
@@ -256,7 +265,8 @@ const file_ampy_bars_v1_bars_proto_rawDesc = "" +
 	" \x01(\x03R\n" +
 	"tradeCount\x12\x1a\n" +
 	"\badjusted\x18\v \x01(\bR\badjusted\x120\n" +
-	"\x14adjustment_policy_id\x18\f \x01(\tR\x12adjustmentPolicyId\x129\n" +
+	"\x14adjustment_policy_id\x18\f \x01(\tR\x12adjustmentPolicyId\x12M\n" +
+	"\x11adjustment_policy\x18\x11 \x01(\x0e2 .ampy.common.v1.AdjustmentPolicyR\x10adjustmentPolicy\x129\n" +
 	"\n" +
 	"event_time\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\teventTime\x12;\n" +
 	"\vingest_time\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\n" +
@@ -286,7 +296,8 @@ var file_ampy_bars_v1_bars_proto_goTypes = []any{
 	(*v1.SecurityId)(nil),         // 2: ampy.common.v1.SecurityId
 	(*timestamppb.Timestamp)(nil), // 3: google.protobuf.Timestamp
 	(*v1.Decimal)(nil),            // 4: ampy.common.v1.Decimal
-	(*v1.Meta)(nil),               // 5: ampy.common.v1.Meta
+	(v1.AdjustmentPolicy)(0),      // 5: ampy.common.v1.AdjustmentPolicy
+	(*v1.Meta)(nil),               // 6: ampy.common.v1.Meta
 }
 var file_ampy_bars_v1_bars_proto_depIdxs = []int32{
 	2,  // 0: ampy.bars.v1.Bar.security:type_name -> ampy.common.v1.SecurityId
@@ -297,16 +308,17 @@ var file_ampy_bars_v1_bars_proto_depIdxs = []int32{
 	4,  // 5: ampy.bars.v1.Bar.low:type_name -> ampy.common.v1.Decimal
 	4,  // 6: ampy.bars.v1.Bar.close:type_name -> ampy.common.v1.Decimal
 	4,  // 7: ampy.bars.v1.Bar.vwap:type_name -> ampy.common.v1.Decimal
-	3,  // 8: ampy.bars.v1.Bar.event_time:type_name -> google.protobuf.Timestamp
-	3,  // 9: ampy.bars.v1.Bar.ingest_time:type_name -> google.protobuf.Timestamp
-	3,  // 10: ampy.bars.v1.Bar.as_of:type_name -> google.protobuf.Timestamp
-	5,  // 11: ampy.bars.v1.Bar.meta:type_name -> ampy.common.v1.Meta
-	0,  // 12: ampy.bars.v1.BarBatch.bars:type_name -> ampy.bars.v1.Bar
-	13, // [13:13] is the sub-list for method output_type
-	13, // [13:13] is the sub-list for method input_type
-	13, // [13:13] is the sub-list for extension type_name
-	13, // [13:13] is the sub-list for extension extendee
-	0,  // [0:13] is the sub-list for field type_name
+	5,  // 8: ampy.bars.v1.Bar.adjustment_policy:type_name -> ampy.common.v1.AdjustmentPolicy
+	3,  // 9: ampy.bars.v1.Bar.event_time:type_name -> google.protobuf.Timestamp
+	3,  // 10: ampy.bars.v1.Bar.ingest_time:type_name -> google.protobuf.Timestamp
+	3,  // 11: ampy.bars.v1.Bar.as_of:type_name -> google.protobuf.Timestamp
+	6,  // 12: ampy.bars.v1.Bar.meta:type_name -> ampy.common.v1.Meta
+	0,  // 13: ampy.bars.v1.BarBatch.bars:type_name -> ampy.bars.v1.Bar
+	14, // [14:14] is the sub-list for method output_type
+	14, // [14:14] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_ampy_bars_v1_bars_proto_init() }

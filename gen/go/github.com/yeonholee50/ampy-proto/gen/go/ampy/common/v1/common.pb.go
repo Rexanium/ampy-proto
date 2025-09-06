@@ -9,7 +9,6 @@ package commonv1
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	_ "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -22,13 +21,331 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// ===== Shared Enums =====
+type AdjustmentPolicy int32
+
+const (
+	AdjustmentPolicy_ADJUSTMENT_POLICY_UNSPECIFIED    AdjustmentPolicy = 0
+	AdjustmentPolicy_ADJUSTMENT_POLICY_RAW            AdjustmentPolicy = 1
+	AdjustmentPolicy_ADJUSTMENT_POLICY_SPLIT_ONLY     AdjustmentPolicy = 2
+	AdjustmentPolicy_ADJUSTMENT_POLICY_SPLIT_DIVIDEND AdjustmentPolicy = 3
+)
+
+// Enum value maps for AdjustmentPolicy.
+var (
+	AdjustmentPolicy_name = map[int32]string{
+		0: "ADJUSTMENT_POLICY_UNSPECIFIED",
+		1: "ADJUSTMENT_POLICY_RAW",
+		2: "ADJUSTMENT_POLICY_SPLIT_ONLY",
+		3: "ADJUSTMENT_POLICY_SPLIT_DIVIDEND",
+	}
+	AdjustmentPolicy_value = map[string]int32{
+		"ADJUSTMENT_POLICY_UNSPECIFIED":    0,
+		"ADJUSTMENT_POLICY_RAW":            1,
+		"ADJUSTMENT_POLICY_SPLIT_ONLY":     2,
+		"ADJUSTMENT_POLICY_SPLIT_DIVIDEND": 3,
+	}
+)
+
+func (x AdjustmentPolicy) Enum() *AdjustmentPolicy {
+	p := new(AdjustmentPolicy)
+	*p = x
+	return p
+}
+
+func (x AdjustmentPolicy) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (AdjustmentPolicy) Descriptor() protoreflect.EnumDescriptor {
+	return file_ampy_common_v1_common_proto_enumTypes[0].Descriptor()
+}
+
+func (AdjustmentPolicy) Type() protoreflect.EnumType {
+	return &file_ampy_common_v1_common_proto_enumTypes[0]
+}
+
+func (x AdjustmentPolicy) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use AdjustmentPolicy.Descriptor instead.
+func (AdjustmentPolicy) EnumDescriptor() ([]byte, []int) {
+	return file_ampy_common_v1_common_proto_rawDescGZIP(), []int{0}
+}
+
+type Side int32
+
+const (
+	Side_SIDE_UNSPECIFIED Side = 0
+	Side_SIDE_BUY         Side = 1
+	Side_SIDE_SELL        Side = 2
+)
+
+// Enum value maps for Side.
+var (
+	Side_name = map[int32]string{
+		0: "SIDE_UNSPECIFIED",
+		1: "SIDE_BUY",
+		2: "SIDE_SELL",
+	}
+	Side_value = map[string]int32{
+		"SIDE_UNSPECIFIED": 0,
+		"SIDE_BUY":         1,
+		"SIDE_SELL":        2,
+	}
+)
+
+func (x Side) Enum() *Side {
+	p := new(Side)
+	*p = x
+	return p
+}
+
+func (x Side) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (Side) Descriptor() protoreflect.EnumDescriptor {
+	return file_ampy_common_v1_common_proto_enumTypes[1].Descriptor()
+}
+
+func (Side) Type() protoreflect.EnumType {
+	return &file_ampy_common_v1_common_proto_enumTypes[1]
+}
+
+func (x Side) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use Side.Descriptor instead.
+func (Side) EnumDescriptor() ([]byte, []int) {
+	return file_ampy_common_v1_common_proto_rawDescGZIP(), []int{1}
+}
+
+type OrderType int32
+
+const (
+	OrderType_ORDER_TYPE_UNSPECIFIED OrderType = 0
+	OrderType_ORDER_TYPE_MARKET      OrderType = 1
+	OrderType_ORDER_TYPE_LIMIT       OrderType = 2
+	OrderType_ORDER_TYPE_STOP        OrderType = 3
+	OrderType_ORDER_TYPE_STOP_LIMIT  OrderType = 4
+)
+
+// Enum value maps for OrderType.
+var (
+	OrderType_name = map[int32]string{
+		0: "ORDER_TYPE_UNSPECIFIED",
+		1: "ORDER_TYPE_MARKET",
+		2: "ORDER_TYPE_LIMIT",
+		3: "ORDER_TYPE_STOP",
+		4: "ORDER_TYPE_STOP_LIMIT",
+	}
+	OrderType_value = map[string]int32{
+		"ORDER_TYPE_UNSPECIFIED": 0,
+		"ORDER_TYPE_MARKET":      1,
+		"ORDER_TYPE_LIMIT":       2,
+		"ORDER_TYPE_STOP":        3,
+		"ORDER_TYPE_STOP_LIMIT":  4,
+	}
+)
+
+func (x OrderType) Enum() *OrderType {
+	p := new(OrderType)
+	*p = x
+	return p
+}
+
+func (x OrderType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (OrderType) Descriptor() protoreflect.EnumDescriptor {
+	return file_ampy_common_v1_common_proto_enumTypes[2].Descriptor()
+}
+
+func (OrderType) Type() protoreflect.EnumType {
+	return &file_ampy_common_v1_common_proto_enumTypes[2]
+}
+
+func (x OrderType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use OrderType.Descriptor instead.
+func (OrderType) EnumDescriptor() ([]byte, []int) {
+	return file_ampy_common_v1_common_proto_rawDescGZIP(), []int{2}
+}
+
+type TimeInForce int32
+
+const (
+	TimeInForce_TIME_IN_FORCE_UNSPECIFIED TimeInForce = 0
+	TimeInForce_TIME_IN_FORCE_DAY         TimeInForce = 1
+	TimeInForce_TIME_IN_FORCE_GTC         TimeInForce = 2
+	TimeInForce_TIME_IN_FORCE_IOC         TimeInForce = 3
+	TimeInForce_TIME_IN_FORCE_FOK         TimeInForce = 4
+	TimeInForce_TIME_IN_FORCE_GTT         TimeInForce = 5
+)
+
+// Enum value maps for TimeInForce.
+var (
+	TimeInForce_name = map[int32]string{
+		0: "TIME_IN_FORCE_UNSPECIFIED",
+		1: "TIME_IN_FORCE_DAY",
+		2: "TIME_IN_FORCE_GTC",
+		3: "TIME_IN_FORCE_IOC",
+		4: "TIME_IN_FORCE_FOK",
+		5: "TIME_IN_FORCE_GTT",
+	}
+	TimeInForce_value = map[string]int32{
+		"TIME_IN_FORCE_UNSPECIFIED": 0,
+		"TIME_IN_FORCE_DAY":         1,
+		"TIME_IN_FORCE_GTC":         2,
+		"TIME_IN_FORCE_IOC":         3,
+		"TIME_IN_FORCE_FOK":         4,
+		"TIME_IN_FORCE_GTT":         5,
+	}
+)
+
+func (x TimeInForce) Enum() *TimeInForce {
+	p := new(TimeInForce)
+	*p = x
+	return p
+}
+
+func (x TimeInForce) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (TimeInForce) Descriptor() protoreflect.EnumDescriptor {
+	return file_ampy_common_v1_common_proto_enumTypes[3].Descriptor()
+}
+
+func (TimeInForce) Type() protoreflect.EnumType {
+	return &file_ampy_common_v1_common_proto_enumTypes[3]
+}
+
+func (x TimeInForce) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use TimeInForce.Descriptor instead.
+func (TimeInForce) EnumDescriptor() ([]byte, []int) {
+	return file_ampy_common_v1_common_proto_rawDescGZIP(), []int{3}
+}
+
+type SignalType int32
+
+const (
+	SignalType_SIGNAL_TYPE_UNSPECIFIED SignalType = 0
+	SignalType_SIGNAL_TYPE_ALPHA       SignalType = 1
+	SignalType_SIGNAL_TYPE_ACTION      SignalType = 2
+)
+
+// Enum value maps for SignalType.
+var (
+	SignalType_name = map[int32]string{
+		0: "SIGNAL_TYPE_UNSPECIFIED",
+		1: "SIGNAL_TYPE_ALPHA",
+		2: "SIGNAL_TYPE_ACTION",
+	}
+	SignalType_value = map[string]int32{
+		"SIGNAL_TYPE_UNSPECIFIED": 0,
+		"SIGNAL_TYPE_ALPHA":       1,
+		"SIGNAL_TYPE_ACTION":      2,
+	}
+)
+
+func (x SignalType) Enum() *SignalType {
+	p := new(SignalType)
+	*p = x
+	return p
+}
+
+func (x SignalType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (SignalType) Descriptor() protoreflect.EnumDescriptor {
+	return file_ampy_common_v1_common_proto_enumTypes[4].Descriptor()
+}
+
+func (SignalType) Type() protoreflect.EnumType {
+	return &file_ampy_common_v1_common_proto_enumTypes[4]
+}
+
+func (x SignalType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use SignalType.Descriptor instead.
+func (SignalType) EnumDescriptor() ([]byte, []int) {
+	return file_ampy_common_v1_common_proto_rawDescGZIP(), []int{4}
+}
+
+type ActionType int32
+
+const (
+	ActionType_ACTION_TYPE_UNSPECIFIED ActionType = 0
+	ActionType_ACTION_TYPE_BUY         ActionType = 1
+	ActionType_ACTION_TYPE_SELL        ActionType = 2
+	ActionType_ACTION_TYPE_HOLD        ActionType = 3
+	ActionType_ACTION_TYPE_CLOSE       ActionType = 4
+)
+
+// Enum value maps for ActionType.
+var (
+	ActionType_name = map[int32]string{
+		0: "ACTION_TYPE_UNSPECIFIED",
+		1: "ACTION_TYPE_BUY",
+		2: "ACTION_TYPE_SELL",
+		3: "ACTION_TYPE_HOLD",
+		4: "ACTION_TYPE_CLOSE",
+	}
+	ActionType_value = map[string]int32{
+		"ACTION_TYPE_UNSPECIFIED": 0,
+		"ACTION_TYPE_BUY":         1,
+		"ACTION_TYPE_SELL":        2,
+		"ACTION_TYPE_HOLD":        3,
+		"ACTION_TYPE_CLOSE":       4,
+	}
+)
+
+func (x ActionType) Enum() *ActionType {
+	p := new(ActionType)
+	*p = x
+	return p
+}
+
+func (x ActionType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ActionType) Descriptor() protoreflect.EnumDescriptor {
+	return file_ampy_common_v1_common_proto_enumTypes[5].Descriptor()
+}
+
+func (ActionType) Type() protoreflect.EnumType {
+	return &file_ampy_common_v1_common_proto_enumTypes[5]
+}
+
+func (x ActionType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ActionType.Descriptor instead.
+func (ActionType) EnumDescriptor() ([]byte, []int) {
+	return file_ampy_common_v1_common_proto_rawDescGZIP(), []int{5}
+}
+
 // Decimal uses scaled integer semantics to avoid float rounding errors.
 // Example: scaled=123456, scale=4 => 12.3456
 type Decimal struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Signed to support negative values (e.g., PnL).
-	Scaled        int64 `protobuf:"zigzag64,1,opt,name=scaled,proto3" json:"scaled,omitempty"`
-	Scale         int32 `protobuf:"varint,2,opt,name=scale,proto3" json:"scale,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Scaled        int64                  `protobuf:"zigzag64,1,opt,name=scaled,proto3" json:"scaled,omitempty"`
+	Scale         int32                  `protobuf:"varint,2,opt,name=scale,proto3" json:"scale,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -281,7 +598,7 @@ var File_ampy_common_v1_common_proto protoreflect.FileDescriptor
 
 const file_ampy_common_v1_common_proto_rawDesc = "" +
 	"\n" +
-	"\x1bampy/common/v1/common.proto\x12\x0eampy.common.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"7\n" +
+	"\x1bampy/common/v1/common.proto\x12\x0eampy.common.v1\"7\n" +
 	"\aDecimal\x12\x16\n" +
 	"\x06scaled\x18\x01 \x01(\x12R\x06scaled\x12\x14\n" +
 	"\x05scale\x18\x02 \x01(\x05R\x05scale\"]\n" +
@@ -299,7 +616,41 @@ const file_ampy_common_v1_common_proto_rawDesc = "" +
 	"\x06source\x18\x02 \x01(\tR\x06source\x12\x1a\n" +
 	"\bproducer\x18\x03 \x01(\tR\bproducer\x12%\n" +
 	"\x0eschema_version\x18\x04 \x01(\tR\rschemaVersion\x12\x1a\n" +
-	"\bchecksum\x18\x05 \x01(\tR\bchecksumB\xbd\x01\n" +
+	"\bchecksum\x18\x05 \x01(\tR\bchecksum*\x98\x01\n" +
+	"\x10AdjustmentPolicy\x12!\n" +
+	"\x1dADJUSTMENT_POLICY_UNSPECIFIED\x10\x00\x12\x19\n" +
+	"\x15ADJUSTMENT_POLICY_RAW\x10\x01\x12 \n" +
+	"\x1cADJUSTMENT_POLICY_SPLIT_ONLY\x10\x02\x12$\n" +
+	" ADJUSTMENT_POLICY_SPLIT_DIVIDEND\x10\x03*9\n" +
+	"\x04Side\x12\x14\n" +
+	"\x10SIDE_UNSPECIFIED\x10\x00\x12\f\n" +
+	"\bSIDE_BUY\x10\x01\x12\r\n" +
+	"\tSIDE_SELL\x10\x02*\x84\x01\n" +
+	"\tOrderType\x12\x1a\n" +
+	"\x16ORDER_TYPE_UNSPECIFIED\x10\x00\x12\x15\n" +
+	"\x11ORDER_TYPE_MARKET\x10\x01\x12\x14\n" +
+	"\x10ORDER_TYPE_LIMIT\x10\x02\x12\x13\n" +
+	"\x0fORDER_TYPE_STOP\x10\x03\x12\x19\n" +
+	"\x15ORDER_TYPE_STOP_LIMIT\x10\x04*\x9f\x01\n" +
+	"\vTimeInForce\x12\x1d\n" +
+	"\x19TIME_IN_FORCE_UNSPECIFIED\x10\x00\x12\x15\n" +
+	"\x11TIME_IN_FORCE_DAY\x10\x01\x12\x15\n" +
+	"\x11TIME_IN_FORCE_GTC\x10\x02\x12\x15\n" +
+	"\x11TIME_IN_FORCE_IOC\x10\x03\x12\x15\n" +
+	"\x11TIME_IN_FORCE_FOK\x10\x04\x12\x15\n" +
+	"\x11TIME_IN_FORCE_GTT\x10\x05*X\n" +
+	"\n" +
+	"SignalType\x12\x1b\n" +
+	"\x17SIGNAL_TYPE_UNSPECIFIED\x10\x00\x12\x15\n" +
+	"\x11SIGNAL_TYPE_ALPHA\x10\x01\x12\x16\n" +
+	"\x12SIGNAL_TYPE_ACTION\x10\x02*\x81\x01\n" +
+	"\n" +
+	"ActionType\x12\x1b\n" +
+	"\x17ACTION_TYPE_UNSPECIFIED\x10\x00\x12\x13\n" +
+	"\x0fACTION_TYPE_BUY\x10\x01\x12\x14\n" +
+	"\x10ACTION_TYPE_SELL\x10\x02\x12\x14\n" +
+	"\x10ACTION_TYPE_HOLD\x10\x03\x12\x15\n" +
+	"\x11ACTION_TYPE_CLOSE\x10\x04B\xbd\x01\n" +
 	"\x12com.ampy.common.v1B\vCommonProtoP\x01Z@github.com/yeonholee50/ampy-proto/gen/go/ampy/common/v1;commonv1\xa2\x02\x03ACX\xaa\x02\x0eAmpy.Common.V1\xca\x02\x0eAmpy\\Common\\V1\xe2\x02\x1aAmpy\\Common\\V1\\GPBMetadata\xea\x02\x10Ampy::Common::V1b\x06proto3"
 
 var (
@@ -314,15 +665,22 @@ func file_ampy_common_v1_common_proto_rawDescGZIP() []byte {
 	return file_ampy_common_v1_common_proto_rawDescData
 }
 
+var file_ampy_common_v1_common_proto_enumTypes = make([]protoimpl.EnumInfo, 6)
 var file_ampy_common_v1_common_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_ampy_common_v1_common_proto_goTypes = []any{
-	(*Decimal)(nil),    // 0: ampy.common.v1.Decimal
-	(*Money)(nil),      // 1: ampy.common.v1.Money
-	(*SecurityId)(nil), // 2: ampy.common.v1.SecurityId
-	(*Meta)(nil),       // 3: ampy.common.v1.Meta
+	(AdjustmentPolicy)(0), // 0: ampy.common.v1.AdjustmentPolicy
+	(Side)(0),             // 1: ampy.common.v1.Side
+	(OrderType)(0),        // 2: ampy.common.v1.OrderType
+	(TimeInForce)(0),      // 3: ampy.common.v1.TimeInForce
+	(SignalType)(0),       // 4: ampy.common.v1.SignalType
+	(ActionType)(0),       // 5: ampy.common.v1.ActionType
+	(*Decimal)(nil),       // 6: ampy.common.v1.Decimal
+	(*Money)(nil),         // 7: ampy.common.v1.Money
+	(*SecurityId)(nil),    // 8: ampy.common.v1.SecurityId
+	(*Meta)(nil),          // 9: ampy.common.v1.Meta
 }
 var file_ampy_common_v1_common_proto_depIdxs = []int32{
-	0, // 0: ampy.common.v1.Money.amount:type_name -> ampy.common.v1.Decimal
+	6, // 0: ampy.common.v1.Money.amount:type_name -> ampy.common.v1.Decimal
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -340,13 +698,14 @@ func file_ampy_common_v1_common_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ampy_common_v1_common_proto_rawDesc), len(file_ampy_common_v1_common_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      6,
 			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file_ampy_common_v1_common_proto_goTypes,
 		DependencyIndexes: file_ampy_common_v1_common_proto_depIdxs,
+		EnumInfos:         file_ampy_common_v1_common_proto_enumTypes,
 		MessageInfos:      file_ampy_common_v1_common_proto_msgTypes,
 	}.Build()
 	File_ampy_common_v1_common_proto = out.File

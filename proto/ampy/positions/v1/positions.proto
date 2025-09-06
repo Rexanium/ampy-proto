@@ -1,0 +1,25 @@
+syntax = "proto3";
+package ampy.positions.v1;
+
+option csharp_namespace = "Ampy.Positions.V1";
+option java_multiple_files = true;
+option java_package = "dev.ampy.positions.v1";
+option objc_class_prefix = "AmpyPosV1";
+
+import "google/protobuf/timestamp.proto";
+import "ampy/common/v1/common.proto";
+
+message PositionSnapshot {
+  string account_id = 1;
+  ampy.common.v1.SecurityId security = 2;
+  ampy.common.v1.Decimal quantity = 3;
+  ampy.common.v1.Decimal avg_price = 4;
+  ampy.common.v1.Money unrealized_pnl = 5; // currency-aware
+  ampy.common.v1.Money realized_pnl = 6;   // currency-aware
+  google.protobuf.Timestamp as_of = 7;
+  ampy.common.v1.Meta meta = 8;
+}
+
+message PositionBatch {
+  repeated PositionSnapshot positions = 1;
+}

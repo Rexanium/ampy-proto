@@ -1,0 +1,29 @@
+syntax = "proto3";
+package ampy.universe.v1;
+
+option csharp_namespace = "Ampy.Universe.V1";
+option java_multiple_files = true;
+option java_package = "dev.ampy.universe.v1";
+option objc_class_prefix = "AmpyUnivV1";
+
+import "google/protobuf/timestamp.proto";
+import "ampy/common/v1/common.proto";
+
+message Constituent {
+  string symbol = 1;
+  string mic = 2;
+  string figi = 3;
+  string isin = 4;
+}
+
+message UniverseSnapshot {
+  string universe_id = 1; // e.g., "nasdaq100_2025w36"
+  repeated Constituent constituents = 2;
+  google.protobuf.Timestamp as_of = 3;
+  string ruleset = 4;
+  ampy.common.v1.Meta meta = 5;
+}
+
+message UniverseBatch {
+  repeated UniverseSnapshot snapshots = 1;
+}
