@@ -74,6 +74,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: bufbuild/buf-setup-action@v1
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libprotobuf-dev protobuf-compiler libabsl-dev
       - name: Generate code
         run: buf generate proto
       - name: Build (CMake)
