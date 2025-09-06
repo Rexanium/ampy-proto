@@ -7,7 +7,7 @@
 package positionsv1
 
 import (
-	v1 "github.com/yeonholee50/ampy-proto/gen/go/ampy/common/v1"
+	v1 "github.com/AmpyFin/ampy-proto/gen/go/ampy/common/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -183,8 +183,8 @@ const file_ampy_positions_v1_positions_proto_rawDesc = "" +
 	"\x05as_of\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\x04asOf\x12(\n" +
 	"\x04meta\x18\b \x01(\v2\x14.ampy.common.v1.MetaR\x04meta\"R\n" +
 	"\rPositionBatch\x12A\n" +
-	"\tpositions\x18\x01 \x03(\v2#.ampy.positions.v1.PositionSnapshotR\tpositionsB\xd5\x01\n" +
-	"\x15com.ampy.positions.v1B\x0ePositionsProtoP\x01ZFgithub.com/yeonholee50/ampy-proto/gen/go/ampy/positions/v1;positionsv1\xa2\x02\x03APX\xaa\x02\x11Ampy.Positions.V1\xca\x02\x11Ampy\\Positions\\V1\xe2\x02\x1dAmpy\\Positions\\V1\\GPBMetadata\xea\x02\x13Ampy::Positions::V1b\x06proto3"
+	"\tpositions\x18\x01 \x03(\v2#.ampy.positions.v1.PositionSnapshotR\tpositionsB\xd1\x01\n" +
+	"\x15com.ampy.positions.v1B\x0ePositionsProtoP\x01ZBgithub.com/AmpyFin/ampy-proto/gen/go/ampy/positions/v1;positionsv1\xa2\x02\x03APX\xaa\x02\x11Ampy.Positions.V1\xca\x02\x11Ampy\\Positions\\V1\xe2\x02\x1dAmpy\\Positions\\V1\\GPBMetadata\xea\x02\x13Ampy::Positions::V1b\x06proto3"
 
 var (
 	file_ampy_positions_v1_positions_proto_rawDescOnce sync.Once

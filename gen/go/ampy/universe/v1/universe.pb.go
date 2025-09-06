@@ -7,7 +7,7 @@
 package universev1
 
 import (
-	v1 "github.com/yeonholee50/ampy-proto/gen/go/ampy/common/v1"
+	v1 "github.com/AmpyFin/ampy-proto/gen/go/ampy/common/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -229,8 +229,8 @@ const file_ampy_universe_v1_universe_proto_rawDesc = "" +
 	"\aruleset\x18\x04 \x01(\tR\aruleset\x12(\n" +
 	"\x04meta\x18\x05 \x01(\v2\x14.ampy.common.v1.MetaR\x04meta\"Q\n" +
 	"\rUniverseBatch\x12@\n" +
-	"\tsnapshots\x18\x01 \x03(\v2\".ampy.universe.v1.UniverseSnapshotR\tsnapshotsB\xcd\x01\n" +
-	"\x14com.ampy.universe.v1B\rUniverseProtoP\x01ZDgithub.com/yeonholee50/ampy-proto/gen/go/ampy/universe/v1;universev1\xa2\x02\x03AUX\xaa\x02\x10Ampy.Universe.V1\xca\x02\x10Ampy\\Universe\\V1\xe2\x02\x1cAmpy\\Universe\\V1\\GPBMetadata\xea\x02\x12Ampy::Universe::V1b\x06proto3"
+	"\tsnapshots\x18\x01 \x03(\v2\".ampy.universe.v1.UniverseSnapshotR\tsnapshotsB\xc9\x01\n" +
+	"\x14com.ampy.universe.v1B\rUniverseProtoP\x01Z@github.com/AmpyFin/ampy-proto/gen/go/ampy/universe/v1;universev1\xa2\x02\x03AUX\xaa\x02\x10Ampy.Universe.V1\xca\x02\x10Ampy\\Universe\\V1\xe2\x02\x1cAmpy\\Universe\\V1\\GPBMetadata\xea\x02\x12Ampy::Universe::V1b\x06proto3"
 
 var (
 	file_ampy_universe_v1_universe_proto_rawDescOnce sync.Once

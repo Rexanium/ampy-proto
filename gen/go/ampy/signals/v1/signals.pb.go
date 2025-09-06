@@ -7,7 +7,7 @@
 package signalsv1
 
 import (
-	v1 "github.com/yeonholee50/ampy-proto/gen/go/ampy/common/v1"
+	v1 "github.com/AmpyFin/ampy-proto/gen/go/ampy/common/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -225,8 +225,8 @@ const file_ampy_signals_v1_signals_proto_rawDesc = "" +
 	"\x04meta\x18\t \x01(\v2\x14.ampy.common.v1.MetaR\x04metaB\a\n" +
 	"\x05value\"@\n" +
 	"\vSignalBatch\x121\n" +
-	"\asignals\x18\x01 \x03(\v2\x17.ampy.signals.v1.SignalR\asignalsB\xc5\x01\n" +
-	"\x13com.ampy.signals.v1B\fSignalsProtoP\x01ZBgithub.com/yeonholee50/ampy-proto/gen/go/ampy/signals/v1;signalsv1\xa2\x02\x03ASX\xaa\x02\x0fAmpy.Signals.V1\xca\x02\x0fAmpy\\Signals\\V1\xe2\x02\x1bAmpy\\Signals\\V1\\GPBMetadata\xea\x02\x11Ampy::Signals::V1b\x06proto3"
+	"\asignals\x18\x01 \x03(\v2\x17.ampy.signals.v1.SignalR\asignalsB\xc1\x01\n" +
+	"\x13com.ampy.signals.v1B\fSignalsProtoP\x01Z>github.com/AmpyFin/ampy-proto/gen/go/ampy/signals/v1;signalsv1\xa2\x02\x03ASX\xaa\x02\x0fAmpy.Signals.V1\xca\x02\x0fAmpy\\Signals\\V1\xe2\x02\x1bAmpy\\Signals\\V1\\GPBMetadata\xea\x02\x11Ampy::Signals::V1b\x06proto3"
 
 var (
 	file_ampy_signals_v1_signals_proto_rawDescOnce sync.Once

@@ -7,7 +7,7 @@
 package barsv1
 
 import (
-	v1 "github.com/yeonholee50/ampy-proto/gen/go/ampy/common/v1"
+	v1 "github.com/AmpyFin/ampy-proto/gen/go/ampy/common/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -274,8 +274,8 @@ const file_ampy_bars_v1_bars_proto_rawDesc = "" +
 	"\x05as_of\x18\x0f \x01(\v2\x1a.google.protobuf.TimestampR\x04asOf\x12(\n" +
 	"\x04meta\x18\x10 \x01(\v2\x14.ampy.common.v1.MetaR\x04meta\"1\n" +
 	"\bBarBatch\x12%\n" +
-	"\x04bars\x18\x01 \x03(\v2\x11.ampy.bars.v1.BarR\x04barsB\xad\x01\n" +
-	"\x10com.ampy.bars.v1B\tBarsProtoP\x01Z<github.com/yeonholee50/ampy-proto/gen/go/ampy/bars/v1;barsv1\xa2\x02\x03ABX\xaa\x02\fAmpy.Bars.V1\xca\x02\fAmpy\\Bars\\V1\xe2\x02\x18Ampy\\Bars\\V1\\GPBMetadata\xea\x02\x0eAmpy::Bars::V1b\x06proto3"
+	"\x04bars\x18\x01 \x03(\v2\x11.ampy.bars.v1.BarR\x04barsB\xa9\x01\n" +
+	"\x10com.ampy.bars.v1B\tBarsProtoP\x01Z8github.com/AmpyFin/ampy-proto/gen/go/ampy/bars/v1;barsv1\xa2\x02\x03ABX\xaa\x02\fAmpy.Bars.V1\xca\x02\fAmpy\\Bars\\V1\xe2\x02\x18Ampy\\Bars\\V1\\GPBMetadata\xea\x02\x0eAmpy::Bars::V1b\x06proto3"
 
 var (
 	file_ampy_bars_v1_bars_proto_rawDescOnce sync.Once
