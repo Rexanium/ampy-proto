@@ -102,21 +102,22 @@ jobs:
       - name: Go build example
         run: go build ./examples/go/smoke
 
-  bsr-push:
-    name: Push schemas to Buf (BSR)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: bufbuild/buf-setup-action@v1
-        with:
-          setup_bsr_credentials: true
-          bsr_token: ${{ secrets.BUF_TOKEN }}
-      - name: Lint & Build
-        run: |
-          buf lint proto
-          buf build proto
-      - name: Push to BSR
-        run: buf push proto
+  # BSR push disabled - requires Buf Schema Registry setup
+  # bsr-push:
+  #   name: Push schemas to Buf (BSR)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: bufbuild/buf-setup-action@v1
+  #       with:
+  #         setup_bsr_credentials: true
+  #         bsr_token: ${{ secrets.BUF_TOKEN }}
+  #     - name: Lint & Build
+  #       run: |
+  #         buf lint proto
+  #         buf build proto
+  #     - name: Push to BSR
+  #       run: buf push proto
 
   github-release:
     name: Create GitHub Release & attach artifacts
