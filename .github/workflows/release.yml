@@ -74,7 +74,7 @@ jobs:
     name: Build C++ static lib
     runs-on: ubuntu-latest
     env:
-      PROTOBUF_VERSION: v27.3           # any v27.x is fine; matches generator headers with runtime_version.h
+      PROTOBUF_VERSION: v32.0           # Use latest stable version for full API compatibility
       PROTOBUF_PREFIX: /tmp/protobuf-install
     steps:
       - uses: actions/checkout@v4
@@ -90,7 +90,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ env.PROTOBUF_PREFIX }}
-          key: protobuf-${{ env.PROTOBUF_VERSION }}-linux-x86_64
+          key: protobuf-${{ env.PROTOBUF_VERSION }}-linux-x86_64-absl-module
 
       - name: Build & install Protobuf ${{ env.PROTOBUF_VERSION }}
         if: steps.cache-protobuf.outputs.cache-hit != 'true'
