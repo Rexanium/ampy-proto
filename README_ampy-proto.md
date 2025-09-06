@@ -1,14 +1,3 @@
-Metadata-Version: 2.4
-Name: ampy-proto
-Version: 2.0.2
-Summary: Canonical schemas for AmpyFin (generated Python protobufs)
-Author: AmpyFin Team
-License-Expression: MIT
-Requires-Python: >=3.9
-Description-Content-Type: text/markdown
-License-File: LICENSE
-Requires-Dist: protobuf<7,>=6.32.0
-Dynamic: license-file
 
 # ampy-proto
 
@@ -34,7 +23,7 @@ AmpyFin is building a self-learning, modular trading system that needs to handle
 ### Python
 
 ```bash
-# Install from PyPI (when published)
+# Install from PyPI
 pip install ampy-proto
 
 # Or install locally
@@ -66,7 +55,7 @@ print(f"AAPL bar: ${bar.close.scaled / (10 ** bar.close.scale):.2f}")
 
 ```bash
 # Add to your go.mod
-go get github.com/AmpyFin/ampy-proto@v1.0.3
+go get github.com/AmpyFin/ampy-proto@v2.0.1
 ```
 
 ```go
@@ -106,6 +95,29 @@ func main() {
 ```
 
 ### C++
+
+**Prerequisites**: Install latest versions of Abseil and Protobuf:
+
+```bash
+# Install Abseil (latest version)
+git clone https://github.com/abseil/abseil-cpp.git
+cd abseil-cpp
+mkdir build && cd build
+cmake -DCMAKE_CXX_STANDARD=17 -DCMAKE_POSITION_INDEPENDENT_CODE=ON ..
+make -j$(nproc)
+sudo make install
+
+# Install Protobuf (latest version)
+git clone https://github.com/protobuf/protobuf.git
+cd protobuf
+git submodule update --init --recursive
+mkdir build && cd build
+cmake -Dprotobuf_BUILD_TESTS=OFF -DCMAKE_CXX_STANDARD=17 ..
+make -j$(nproc)
+sudo make install
+```
+
+**Build the library**:
 
 ```bash
 # Build the library
@@ -243,10 +255,10 @@ cd examples/cpp && g++ -I../../gen/cpp smoke.cpp -L../../gen/cpp/build -lampy_pr
 
 This project follows semantic versioning:
 - **Major versions** (v2, v3): Breaking changes requiring migration
-- **Minor versions** (v1.1, v1.2): Additive changes, backward compatible
-- **Patch versions** (v1.0.1, v1.0.2, v1.0.3): Bug fixes, backward compatible
+- **Minor versions** (v2.1, v2.2): Additive changes, backward compatible
+- **Patch versions** (v2.0.1, v2.0.2): Bug fixes, backward compatible
 
-Current version: **v1.0.3**
+Current version: **v2.0.1**
 
 ## Contributing
 
@@ -279,4 +291,3 @@ MIT License - see [LICENSE](LICENSE) file for details.
 ---
 
 *This project is part of the AmpyFin ecosystem - a self-learning, modular trading system.*
-
