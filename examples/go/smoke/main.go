@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	barspb "github.com/yeonholee50/ampy-proto/gen/go/ampy/bars/v1"
+	barspb "github.com/AmpyFin/ampy-proto/gen/go/ampy/bars/v1"
 )
 
 func main() {
