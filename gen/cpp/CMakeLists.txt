@@ -6,7 +6,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Protobuf REQUIRED)
-find_package(absl REQUIRED)
+# Try to find Abseil, but make it optional for compatibility
+find_package(absl QUIET)
 
 # Collect all generated C++ sources
 file(GLOB_RECURSE AMPYPB_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/ampy/**/*.cc")
@@ -28,10 +29,42 @@ target_compile_options(ampy_proto PRIVATE
 target_link_libraries(ampy_proto
   PUBLIC
     protobuf::libprotobuf
-    absl::base
-    absl::strings
-    absl::log
 )
+
+# Link Abseil libraries if available
+if(absl_FOUND)
+  target_link_libraries(ampy_proto
+    PUBLIC
+      absl::base
+      absl::strings
+      absl::log_internal_message
+      absl::log_internal_check_op
+      absl::log_internal_format
+      absl::log_internal_conditions
+      absl::log_internal_globals
+      absl::log_internal_proto
+      absl::log_internal_structured_proto
+      absl::log_internal_log_sink_set
+      absl::log_internal_nullguard
+      absl::log_internal_entry
+      absl::log_internal_voidify
+  )
+else()
+  # Fallback: try to link system Abseil libraries directly
+  find_library(ABSL_BASE_LIB absl_base)
+  find_library(ABSL_STRINGS_LIB absl_strings)
+  find_library(ABSL_LOG_LIB absl_log)
+  
+  if(ABSL_BASE_LIB)
+    target_link_libraries(ampy_proto PUBLIC ${ABSL_BASE_LIB})
+  endif()
+  if(ABSL_STRINGS_LIB)
+    target_link_libraries(ampy_proto PUBLIC ${ABSL_STRINGS_LIB})
+  endif()
+  if(ABSL_LOG_LIB)
+    target_link_libraries(ampy_proto PUBLIC ${ABSL_LOG_LIB})
+  endif()
+endif()
 
 # Optional install if you want consumers to 'make install'
 install(TARGETS ampy_proto EXPORT ampy_protoTargets ARCHIVE DESTINATION lib)
