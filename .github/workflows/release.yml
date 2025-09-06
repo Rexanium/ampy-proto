@@ -70,48 +70,48 @@ jobs:
           repository-url: https://test.pypi.org/legacy/
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
 
-build-cpp:
-  name: Build C++ static lib
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v4
+  build-cpp:
+    name: Build C++ static lib
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-    - uses: bufbuild/buf-setup-action@v1
+      - uses: bufbuild/buf-setup-action@v1
 
-    - name: Install Protobuf (C++) and deps
-      run: |
-        sudo apt-get update
-        # protobuf-compiler + headers, abseil (needed by newer protobuf), zlib (protobuf depends on it)
-        sudo apt-get install -y protobuf-compiler libprotobuf-dev libabsl-dev zlib1g-dev
+      - name: Install Protobuf (C++) and deps
+        run: |
+          sudo apt-get update
+          # protobuf-compiler + headers, abseil (needed by newer protobuf), zlib (protobuf depends on it)
+          sudo apt-get install -y protobuf-compiler libprotobuf-dev libabsl-dev zlib1g-dev
 
-        # Sanity: show versions & cmake package path
-        protoc --version || true
-        dpkg -l | grep -E 'protobuf|absl' || true
-        cmake --version
+          # Sanity: show versions & cmake package path
+          protoc --version || true
+          dpkg -l | grep -E 'protobuf|absl' || true
+          cmake --version
 
-    - name: Generate code
-      run: buf generate proto
+      - name: Generate code
+        run: buf generate proto
 
-    - name: Configure (CMake)
-      run: |
-        # If CMake struggles to find Protobuf, give it an explicit hint:
-        PROTO_DIR="/usr/lib/x86_64-linux-gnu/cmake/protobuf"
-        if [ -d "$PROTO_DIR" ]; then
-          cmake -S gen/cpp -B build/cpp -DProtobuf_DIR="$PROTO_DIR"
-        else
-          cmake -S gen/cpp -B build/cpp
-        fi
+      - name: Configure (CMake)
+        run: |
+          # If CMake struggles to find Protobuf, give it an explicit hint:
+          PROTO_DIR="/usr/lib/x86_64-linux-gnu/cmake/protobuf"
+          if [ -d "$PROTO_DIR" ]; then
+            cmake -S gen/cpp -B build/cpp -DProtobuf_DIR="$PROTO_DIR"
+          else
+            cmake -S gen/cpp -B build/cpp
+          fi
 
-    - name: Build
-      run: cmake --build build/cpp -j
+      - name: Build
+        run: cmake --build build/cpp -j
 
-    - name: Upload C++ artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: cpp-artifacts
-        path: |
-          build/cpp/libampy_proto.a
-          gen/cpp/**/*.h
+      - name: Upload C++ artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: cpp-artifacts
+          path: |
+            build/cpp/libampy_proto.a
+            gen/cpp/**/*.h
 
 
   go-smoke:
