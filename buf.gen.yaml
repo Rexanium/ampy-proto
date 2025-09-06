@@ -1,14 +1,19 @@
 version: v1
+
 managed:
   enabled: true
   go_package_prefix:
     default: github.com/yeonholee50/ampy-proto/gen/go
+
 plugins:
+  # Remote plugins (no 'opt: paths=source_relative' with remote)
   - plugin: buf.build/protocolbuffers/go
     out: gen/go
-    opt: paths=source_relative
+
   - plugin: buf.build/protocolbuffers/python
     out: gen/python
-  - plugin: buf.build/protocolbuffers/cpp:v32.0   # 👈 pin to 32.0
+
+  # C++ via remote plugin (no opts here either)
+  # If you prefer local control, see the local-option block below.
+  - plugin: buf.build/protocolbuffers/cpp:v32.0
     out: gen/cpp
-    opt: paths=source_relative
