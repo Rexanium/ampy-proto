@@ -46,7 +46,6 @@ jobs:
           name: python-dist
           path: dist
       - name: Publish
-        if: ${{ secrets.PYPI_API_TOKEN != '' }}
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           packages-dir: dist
@@ -63,7 +62,6 @@ jobs:
           name: python-dist
           path: dist
       - name: Publish to TestPyPI
-        if: ${{ secrets.TEST_PYPI_API_TOKEN != '' }}
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           packages-dir: dist
@@ -110,17 +108,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: bufbuild/buf-setup-action@v1
-        if: ${{ secrets.BUF_TOKEN != '' }}
         with:
           setup_bsr_credentials: true
           bsr_token: ${{ secrets.BUF_TOKEN }}
       - name: Lint & Build
-        if: ${{ secrets.BUF_TOKEN != '' }}
         run: |
           buf lint proto
           buf build proto
       - name: Push to BSR
-        if: ${{ secrets.BUF_TOKEN != '' }}
         run: buf push proto
 
   github-release:
