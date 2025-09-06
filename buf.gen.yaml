@@ -2,12 +2,13 @@ version: v1
 managed:
   enabled: true
   go_package_prefix:
-    default: github.com/AmpyFin/ampy-proto/gen/go
+    default: github.com/yeonholee50/ampy-proto/gen/go
 plugins:
   - plugin: buf.build/protocolbuffers/go
     out: gen/go
     opt: paths=source_relative
   - plugin: buf.build/protocolbuffers/python
     out: gen/python
-  - plugin: buf.build/protocolbuffers/cpp
+  - plugin: buf.build/protocolbuffers/cpp:v32.0   # 👈 pin to 32.0
     out: gen/cpp
+    opt: paths=source_relative

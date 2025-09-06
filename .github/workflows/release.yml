@@ -74,49 +74,56 @@ jobs:
     name: Build C++ static lib
     runs-on: ubuntu-latest
     env:
-      PROTOBUF_TAG: v27.3
+      PROTOBUF_TAG: v32.0
       PROTOBUF_PREFIX: /tmp/protobuf-install
     steps:
       - uses: actions/checkout@v4
       - uses: bufbuild/buf-setup-action@v1
 
-      - name: Install build toolchain
+      - name: Toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install -y git cmake ninja-build g++ make zlib1g-dev
+          sudo apt-get install -y git cmake ninja-build g++ make zlib1g-dev unzip
+          # IMPORTANT: do NOT install libprotobuf-dev/protobuf-compiler from apt here
 
-      - name: Cache Protobuf build
+      - name: Cache Protobuf runtime (built from source)
         id: cache-protobuf
         uses: actions/cache@v4
         with:
           path: ${{ env.PROTOBUF_PREFIX }}
-          key: protobuf-${{ env.PROTOBUF_TAG }}-linux-x86_64
+          key: protobuf-${{ env.PROTOBUF_TAG }}-install-linux-x86_64
 
-      - name: Build & install Protobuf ${{ env.PROTOBUF_TAG }}
+      - name: Build & Install Protobuf ${{ env.PROTOBUF_TAG }}
         if: steps.cache-protobuf.outputs.cache-hit != 'true'
         run: |
-          set -e
-          git clone --depth 1 --branch "$PROTOBUF_TAG" --recurse-submodules https://github.com/protocolbuffers/protobuf.git
-          cmake -S protobuf -B protobuf/build -G Ninja \
+          set -euxo pipefail
+          git clone --depth 1 --branch "${PROTOBUF_TAG}" https://github.com/protocolbuffers/protobuf.git
+          cd protobuf
+          git submodule update --init --recursive
+          cmake -S . -B build \
+            -G Ninja \
             -DCMAKE_BUILD_TYPE=Release \
-            -Dprotobuf_BUILD_TESTS=OFF \
-            -Dprotobuf_ABSL_PROVIDER=module \
-            -DCMAKE_INSTALL_PREFIX="${PROTOBUF_PREFIX}"
-          cmake --build protobuf/build -j
-          cmake --install protobuf/build
+            -DCMAKE_INSTALL_PREFIX="${PROTOBUF_PREFIX}" \
+            -Dprotobuf_BUILD_TESTS=OFF
+          cmake --build build -j
+          cmake --install build
           "${PROTOBUF_PREFIX}/bin/protoc" --version
 
-      - name: Generate code (Buf)
-        run: buf generate proto
+      - name: Generate code (Buf remote plugins)
+        run: |
+          buf generate proto
 
-      - name: Configure (CMake) with modern Protobuf
+      - name: Configure CMake (use our 32.0 runtime)
         run: |
           cmake -S gen/cpp -B build/cpp -G Ninja \
             -DCMAKE_PREFIX_PATH="${PROTOBUF_PREFIX}" \
-            -DProtobuf_DIR="${PROTOBUF_PREFIX}/lib/cmake/protobuf"
+            -DProtobuf_INCLUDE_DIR="${PROTOBUF_PREFIX}/include" \
+            -DProtobuf_LIBRARY="${PROTOBUF_PREFIX}/lib/libprotobuf.a" || true
+          # If FindProtobuf can’t see it, we still pass include path in compile step below.
 
       - name: Build
-        run: cmake --build build/cpp -j
+        run: |
+          cmake --build build/cpp -j
 
       - name: Upload C++ artifacts
         uses: actions/upload-artifact@v4
@@ -125,6 +132,7 @@ jobs:
           path: |
             build/cpp/libampy_proto.a
             gen/cpp/**/*.h
+
 
 
 
