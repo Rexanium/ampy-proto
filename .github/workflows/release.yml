@@ -77,7 +77,15 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libprotobuf-dev protobuf-compiler libabsl-dev
+          sudo apt-get install -y libabsl-dev
+          # Install newer protobuf version to match generated code
+          wget https://github.com/protocolbuffers/protobuf/releases/download/v25.1/protobuf-25.1.tar.gz
+          tar -xzf protobuf-25.1.tar.gz
+          cd protobuf-25.1
+          ./configure --prefix=/usr/local
+          make -j$(nproc)
+          sudo make install
+          sudo ldconfig
       - name: Generate code
         run: buf generate proto
       - name: Build (CMake)
