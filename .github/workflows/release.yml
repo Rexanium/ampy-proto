@@ -86,7 +86,7 @@ jobs:
           cd protobuf-25.1
           mkdir build && cd build
           # Build protobuf without Abseil to avoid dependency issues
-          cmake -DCMAKE_BUILD_TYPE=Release -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_ABSL_PROVIDER=package -DCMAKE_INSTALL_PREFIX=/usr/local ..
+          cmake -DCMAKE_BUILD_TYPE=Release -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_ABSL_PROVIDER=none -DCMAKE_INSTALL_PREFIX=/usr/local ..
           make -j$(nproc)
           sudo make install
           sudo ldconfig
