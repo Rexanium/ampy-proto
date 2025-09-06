@@ -1,0 +1,16 @@
+{
+    "snapshots": [
+      {
+        "universeId": "nasdaq100_2025w36",
+        "constituents": [
+          {"symbol": "AAPL", "mic": "XNAS"},
+          {"symbol": "MSFT", "mic": "XNAS"},
+          {"symbol": "NVDA", "mic": "XNAS"}
+        ],
+        "asOf": "2025-09-01T00:00:00Z",
+        "ruleset": "index=NASDAQ100; country=US; min_price=5; min_dollar_vol=1e6",
+        "meta": {"runId": "univ_991", "source": "symbol-master", "producer": "universe-1", "schemaVersion": "ampy.universe.v1:1.0.0"}
+      }
+    ]
+  }
+  

@@ -1,0 +1,13 @@
+{
+    "rates": [
+      {
+        "pair": {"base": "USD", "quote": "JPY"},
+        "bid": {"scaled": 147230000, "scale": 6},
+        "ask": {"scaled": 147238000, "scale": 6},
+        "mid": {"scaled": 147234000, "scale": 6},
+        "asOf": "2025-09-05T19:30:00Z",
+        "meta": {"runId": "fx_145", "source": "fxrates-go", "producer": "fx-1", "schemaVersion": "ampy.fx.v1:1.0.0"}
+      }
+    ]
+  }
+  

@@ -1,0 +1,16 @@
+{
+    "fills": [
+      {
+        "accountId": "ALPACA-LIVE-01",
+        "clientOrderId": "co_20250905_001",
+        "brokerOrderId": "brk_778899",
+        "security": {"symbol": "AAPL", "mic": "XNAS"},
+        "price": {"scaled": 1920000, "scale": 4},
+        "quantity": {"scaled": 150000, "scale": 2},
+        "venue": "ALPACA",
+        "eventTime": "2025-09-05T19:31:06Z",
+        "meta": {"runId": "live_trading_44", "source": "broker-alpaca", "producer": "alp-1", "schemaVersion": "ampy.fills.v1:1.0.0"}
+      }
+    ]
+  }
+  

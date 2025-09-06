@@ -1,0 +1,17 @@
+{
+    "items": [
+      {
+        "id": "marketbeat:2025-09-05:amzn-8b12c6",
+        "source": "marketbeat",
+        "url": "https://example/amzn",
+        "headline": "Amazon Raises FY Guidance; Shares Tick Higher",
+        "body": "Amazon announced...",
+        "tickers": ["AMZN", "QQQ"],
+        "sentimentScoreBp": 240,
+        "publishedAt": "2025-09-05T13:05:11Z",
+        "ingestTime": "2025-09-05T13:05:15Z",
+        "meta": {"runId": "news_live_37", "source": "marketbeat-go", "producer": "news-2", "schemaVersion": "ampy.news.v1:1.0.0"}
+      }
+    ]
+  }
+  

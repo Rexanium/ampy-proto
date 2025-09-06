@@ -1,0 +1,23 @@
+{
+    "bars": [
+      {
+        "security": {"symbol": "AAPL", "mic": "XNAS"},
+        "start": "2025-09-05T19:30:00Z",
+        "end": "2025-09-05T19:31:00Z",
+        "open": {"scaled": 1923450, "scale": 4},
+        "high": {"scaled": 1925600, "scale": 4},
+        "low":  {"scaled": 1922200, "scale": 4},
+        "close":{"scaled": 1924100, "scale": 4},
+        "vwap": {"scaled": 1924105, "scale": 4},
+        "volume": 184230,
+        "tradeCount": 1432,
+        "adjusted": true,
+        "adjustmentPolicy": "ADJUSTMENT_POLICY_SPLIT_DIVIDEND",
+        "eventTime": "2025-09-05T19:31:00Z",
+        "ingestTime": "2025-09-05T19:31:01Z",
+        "asOf": "2025-09-05T19:31:01Z",
+        "meta": {"runId": "run_abc123", "source": "yfinance-go", "producer": "ingest-1", "schemaVersion": "ampy.bars.v1:1.0.0"}
+      }
+    ]
+  }
+  

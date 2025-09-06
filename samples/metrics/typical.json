@@ -1,0 +1,11 @@
+{
+    "metrics": [
+      {
+        "name": "oms.order_rejects",
+        "labels": {"broker": "alpaca", "env": "prod", "reason": "risk_check"},
+        "value": 1.0,
+        "at": "2025-09-05T19:31:05Z"
+      }
+    ]
+  }
+  

@@ -1,0 +1,16 @@
+{
+    "ticks": [
+      {
+        "trade": {
+          "security": {"symbol": "MSFT", "mic": "XNAS"},
+          "price": {"scaled": 4275150, "scale": 4},
+          "size": 100,
+          "venue": "XNAS",
+          "eventTime": "2025-09-05T19:30:12.451234Z",
+          "ingestTime": "2025-09-05T19:30:12.462100Z",
+          "meta": {"runId": "live_0912", "source": "databento-cpp", "producer": "tick-1", "schemaVersion": "ampy.ticks.v1:1.0.0"}
+        }
+      }
+    ]
+  }
+  

@@ -1,0 +1,14 @@
+{
+    "actions": [
+      {
+        "split": {
+          "security": {"symbol": "TSLA", "mic": "XNAS"},
+          "ratioNumerator": 3,
+          "ratioDenominator": 1,
+          "exDate": "2025-08-15T00:00:00Z",
+          "meta": {"runId": "ca_77", "source": "corp-actions-go", "producer": "ca-1", "schemaVersion": "ampy.corporate_actions.v1:1.0.0"}
+        }
+      }
+    ]
+  }
+  

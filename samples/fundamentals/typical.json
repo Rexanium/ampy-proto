@@ -1,0 +1,20 @@
+{
+    "snapshots": [
+      {
+        "security": {"symbol": "AAPL", "mic": "XNAS"},
+        "lines": [
+          {
+            "key": "revenue",
+            "value": {"scaled": 119870000000000, "scale": 2},
+            "currencyCode": "USD",
+            "periodStart": "2025-03-30T00:00:00Z",
+            "periodEnd": "2025-06-29T00:00:00Z"
+          }
+        ],
+        "source": "tiingo",
+        "asOf": "2025-08-01T00:00:00Z",
+        "meta": {"runId": "fund_082", "source": "tiingo-go", "producer": "fund-ingest-1", "schemaVersion": "ampy.fundamentals.v1:1.0.0"}
+      }
+    ]
+  }
+  

@@ -1,0 +1,19 @@
+{
+    "orders": [
+      {
+        "accountId": "ALPACA-LIVE-01",
+        "clientOrderId": "co_20250905_001",
+        "security": {"symbol": "AAPL", "mic": "XNAS"},
+        "side": "SIDE_BUY",
+        "orderType": "ORDER_TYPE_LIMIT",
+        "tif": "TIME_IN_FORCE_DAY",
+        "quantity": {"scaled": 1000000, "scale": 2},
+        "limitPrice": {"scaled": 1919900, "scale": 4},
+        "venue": "ALPACA",
+        "strategyTag": "hyper",
+        "createdAt": "2025-09-05T19:31:05Z",
+        "meta": {"runId": "live_trading_44", "source": "ampy-oms", "producer": "oms-2", "schemaVersion": "ampy.orders.v1:1.0.0"}
+      }
+    ]
+  }
+  

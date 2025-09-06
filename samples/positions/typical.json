@@ -1,0 +1,15 @@
+{
+    "positions": [
+      {
+        "accountId": "ALPACA-LIVE-01",
+        "security": {"symbol": "AAPL", "mic": "XNAS"},
+        "quantity": {"scaled": 985000, "scale": 2},
+        "avgPrice": {"scaled": 1917500, "scale": 4},
+        "unrealizedPnl": {"amount": {"scaled": 2450000, "scale": 2}, "currencyCode": "USD"},
+        "realizedPnl": {"amount": {"scaled": -320000, "scale": 2}, "currencyCode": "USD"},
+        "asOf": "2025-09-05T19:35:00Z",
+        "meta": {"runId": "live_trading_44", "source": "ampy-position-pnl", "producer": "pnl-1", "schemaVersion": "ampy.positions.v1:1.0.0"}
+      }
+    ]
+  }
+  
