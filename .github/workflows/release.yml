@@ -70,41 +70,49 @@ jobs:
           repository-url: https://test.pypi.org/legacy/
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
 
-  build-cpp:
-    name: Build C++ static lib
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: bufbuild/buf-setup-action@v1
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libabsl-dev cmake build-essential
-          # Install protobuf from Ubuntu packages (compatible version)
-          sudo apt-get install -y libprotobuf-dev protobuf-compiler
-          # Install a newer protobuf version that matches buf's expectations
-          wget https://github.com/protocolbuffers/protobuf/releases/download/v24.4/protobuf-24.4.tar.gz
-          tar -xzf protobuf-24.4.tar.gz
-          cd protobuf-24.4
-          mkdir build && cd build
-          # Build protobuf with system Abseil to ensure compatibility
-          cmake -DCMAKE_BUILD_TYPE=Release -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_ABSL_PROVIDER=package -DCMAKE_INSTALL_PREFIX=/usr/local ..
-          make -j$(nproc)
-          sudo make install
-          sudo ldconfig
-      - name: Generate code
-        run: buf generate proto
-      - name: Build (CMake)
-        run: |
+build-cpp:
+  name: Build C++ static lib
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
+
+    - uses: bufbuild/buf-setup-action@v1
+
+    - name: Install Protobuf (C++) and deps
+      run: |
+        sudo apt-get update
+        # protobuf-compiler + headers, abseil (needed by newer protobuf), zlib (protobuf depends on it)
+        sudo apt-get install -y protobuf-compiler libprotobuf-dev libabsl-dev zlib1g-dev
+
+        # Sanity: show versions & cmake package path
+        protoc --version || true
+        dpkg -l | grep -E 'protobuf|absl' || true
+        cmake --version
+
+    - name: Generate code
+      run: buf generate proto
+
+    - name: Configure (CMake)
+      run: |
+        # If CMake struggles to find Protobuf, give it an explicit hint:
+        PROTO_DIR="/usr/lib/x86_64-linux-gnu/cmake/protobuf"
+        if [ -d "$PROTO_DIR" ]; then
+          cmake -S gen/cpp -B build/cpp -DProtobuf_DIR="$PROTO_DIR"
+        else
           cmake -S gen/cpp -B build/cpp
-          cmake --build build/cpp -j
-      - name: Upload C++ artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: cpp-artifacts
-          path: |
-            build/cpp/libampy_proto.a
-            gen/cpp/**/*.h
+        fi
+
+    - name: Build
+      run: cmake --build build/cpp -j
+
+    - name: Upload C++ artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: cpp-artifacts
+        path: |
+          build/cpp/libampy_proto.a
+          gen/cpp/**/*.h
+
 
   go-smoke:
     name: Go smoke build
