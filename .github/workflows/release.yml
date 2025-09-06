@@ -1,0 +1,146 @@
+name: Release (Tag-driven)
+
+on:
+  push:
+    tags:
+      - 'v*'           # e.g., v1.0.0 or v1.0.1-rc1
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-python:
+    name: Build Python wheel/sdist
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: bufbuild/buf-setup-action@v1
+
+      - name: Generate code (Go/Python/C++)
+      run: buf generate proto
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Build wheel + sdist
+        run: |
+          python -m pip install --upgrade pip build
+          python -m build
+      - name: Upload dist artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-dist
+          path: dist/*
+
+  publish-pypi:
+    name: Publish to PyPI (release tags)
+    needs: build-python
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref_name, 'v') && !contains(github.ref_name, '-rc') && secrets.PYPI_API_TOKEN != ''
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: python-dist
+          path: dist
+      - name: Publish
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist
+          password: ${{ secrets.PYPI_API_TOKEN }}
+
+  publish-testpypi:
+    name: Publish to TestPyPI (rc tags)
+    needs: build-python
+    runs-on: ubuntu-latest
+    if: contains(github.ref_name, '-rc') && secrets.TEST_PYPI_API_TOKEN != ''
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: python-dist
+          path: dist
+      - name: Publish to TestPyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist
+          repository-url: https://test.pypi.org/legacy/
+          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+
+  build-cpp:
+    name: Build C++ static lib
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: bufbuild/buf-setup-action@v1
+      - name: Generate code
+        run: buf generate proto
+      - name: Build (CMake)
+        run: |
+          cmake -S gen/cpp -B build/cpp
+          cmake --build build/cpp -j
+      - name: Upload C++ artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: cpp-artifacts
+          path: |
+            build/cpp/libampy_proto.a
+            gen/cpp/**/*.h
+
+  go-smoke:
+    name: Go smoke build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: bufbuild/buf-setup-action@v1
+      - name: Generate code
+        run: buf generate proto
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+      - name: Go build example
+        run: go build ./examples/go/smoke
+
+  bsr-push:
+    name: Push schemas to Buf (BSR)
+    runs-on: ubuntu-latest
+    if: secrets.BUF_TOKEN != ''
+    steps:
+      - uses: actions/checkout@v4
+      - uses: bufbuild/buf-setup-action@v1
+        with:
+          setup_bsr_credentials: true
+          bsr_token: ${{ secrets.BUF_TOKEN }}
+      - name: Lint & Build
+        run: |
+          buf lint proto
+          buf build proto
+      - name: Push to BSR
+        run: buf push proto
+
+  github-release:
+    name: Create GitHub Release & attach artifacts
+    needs: [build-python, build-cpp]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: python-dist
+          path: dist
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: cpp-artifacts
+          path: release_assets/cpp
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*
+            release_assets/cpp/**
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

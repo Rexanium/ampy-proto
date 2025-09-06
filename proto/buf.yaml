@@ -1,4 +1,6 @@
 version: v1
+name: buf.build/yeonholee50/ampy-proto
+
 lint:
   use:
     - STANDARD
