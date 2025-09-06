@@ -13,7 +13,6 @@ plugins:
   - plugin: buf.build/protocolbuffers/python
     out: gen/python
 
-  # C++ via local protoc plugin (supports more options)
-  - plugin: protoc-gen-cpp
+  # C++ via remote plugin (no paths option supported)
+  - plugin: buf.build/protocolbuffers/cpp:v32.0
     out: gen/cpp
-    opt: paths=source_relative
