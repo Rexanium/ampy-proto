@@ -74,8 +74,8 @@ jobs:
     name: Build C++ static lib
     runs-on: ubuntu-latest
     env:
-      PROTOBUF_VERSION: v32.0           # Use latest stable version for full API compatibility
-      PROTOBUF_PREFIX: /tmp/protobuf-install
+      PROTOBUF_TAG: v27.3
+      PROTOBUF_PREFIX: ${{ runner.temp }}/protobuf-install
     steps:
       - uses: actions/checkout@v4
       - uses: bufbuild/buf-setup-action@v1
@@ -83,37 +83,37 @@ jobs:
       - name: Install build toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install -y git cmake ninja-build g++ make zlib1g-dev unzip
+          sudo apt-get install -y git cmake ninja-build g++ make zlib1g-dev
 
       - name: Cache Protobuf build
         id: cache-protobuf
         uses: actions/cache@v4
         with:
           path: ${{ env.PROTOBUF_PREFIX }}
-          key: protobuf-${{ env.PROTOBUF_VERSION }}-linux-x86_64-prebuilt
+          key: protobuf-${{ env.PROTOBUF_TAG }}-linux-x86_64
 
-      - name: Install Protobuf ${{ env.PROTOBUF_VERSION }}
+      - name: Build & install Protobuf ${{ env.PROTOBUF_TAG }}
         if: steps.cache-protobuf.outputs.cache-hit != 'true'
         run: |
           set -e
-          # Use pre-built protoc compiler for speed
-          wget https://github.com/protocolbuffers/protobuf/releases/download/$PROTOBUF_VERSION/protoc-$PROTOBUF_VERSION-linux-x86_64.zip
-          unzip protoc-$PROTOBUF_VERSION-linux-x86_64.zip -d "$PROTOBUF_PREFIX"
-          chmod +x "$PROTOBUF_PREFIX/bin/protoc"
+          git clone --depth 1 --branch "$PROTOBUF_TAG" --recurse-submodules https://github.com/protocolbuffers/protobuf.git
+          cmake -S protobuf -B protobuf/build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -Dprotobuf_BUILD_TESTS=OFF \
+            -Dprotobuf_ABSL_PROVIDER=module \
+            -DCMAKE_INSTALL_PREFIX="$PROTOBUF_PREFIX"
+          cmake --build protobuf/build -j
+          cmake --install protobuf/build
           "$PROTOBUF_PREFIX/bin/protoc" --version
-          
-          # Install C++ libraries from Ubuntu packages (faster than building from source)
-          sudo apt-get install -y libprotobuf-dev libprotobuf32t64
 
-      - name: Generate code
-        run: |
-          # Use the protobuf compiler we just built
-          export PATH="$PROTOBUF_PREFIX/bin:$PATH"
-          buf generate proto
+      - name: Generate code (Buf)
+        run: buf generate proto
 
-      - name: Configure (CMake) using system Protobuf
+      - name: Configure (CMake) with modern Protobuf
         run: |
-          cmake -S gen/cpp -B build/cpp -G Ninja
+          cmake -S gen/cpp -B build/cpp -G Ninja \
+            -DCMAKE_PREFIX_PATH="${PROTOBUF_PREFIX}" \
+            -DProtobuf_DIR="${PROTOBUF_PREFIX}/lib/cmake/protobuf"
 
       - name: Build
         run: cmake --build build/cpp -j
@@ -125,6 +125,7 @@ jobs:
           path: |
             build/cpp/libampy_proto.a
             gen/cpp/**/*.h
+
 
 
 
