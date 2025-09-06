@@ -73,34 +73,47 @@ jobs:
   build-cpp:
     name: Build C++ static lib
     runs-on: ubuntu-latest
+    env:
+      PROTOBUF_VERSION: v27.3           # any v27.x is fine; matches generator headers with runtime_version.h
+      PROTOBUF_PREFIX: ${{ runner.temp }}/protobuf-install
     steps:
       - uses: actions/checkout@v4
-
       - uses: bufbuild/buf-setup-action@v1
 
-      - name: Install Protobuf (C++) and deps
+      - name: Install build toolchain
         run: |
           sudo apt-get update
-          # protobuf-compiler + headers, abseil (needed by newer protobuf), zlib (protobuf depends on it)
-          sudo apt-get install -y protobuf-compiler libprotobuf-dev libabsl-dev zlib1g-dev
+          sudo apt-get install -y git cmake ninja-build g++ make zlib1g-dev
 
-          # Sanity: show versions & cmake package path
-          protoc --version || true
-          dpkg -l | grep -E 'protobuf|absl' || true
-          cmake --version
+      - name: Cache Protobuf build
+        id: cache-protobuf
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.PROTOBUF_PREFIX }}
+          key: protobuf-${{ env.PROTOBUF_VERSION }}-linux-x86_64
+
+      - name: Build & install Protobuf ${{ env.PROTOBUF_VERSION }}
+        if: steps.cache-protobuf.outputs.cache-hit != 'true'
+        run: |
+          set -e
+          git clone --depth 1 --branch $PROTOBUF_VERSION --recurse-submodules https://github.com/protocolbuffers/protobuf.git
+          cmake -S protobuf -B protobuf/build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -Dprotobuf_BUILD_TESTS=OFF \
+            -Dprotobuf_ABSL_PROVIDER=module \
+            -DCMAKE_INSTALL_PREFIX="$PROTOBUF_PREFIX"
+          cmake --build protobuf/build -j
+          cmake --install protobuf/build
+          "$PROTOBUF_PREFIX/bin/protoc" --version
 
       - name: Generate code
         run: buf generate proto
 
-      - name: Configure (CMake)
+      - name: Configure (CMake) using installed Protobuf
         run: |
-          # If CMake struggles to find Protobuf, give it an explicit hint:
-          PROTO_DIR="/usr/lib/x86_64-linux-gnu/cmake/protobuf"
-          if [ -d "$PROTO_DIR" ]; then
-            cmake -S gen/cpp -B build/cpp -DProtobuf_DIR="$PROTO_DIR"
-          else
-            cmake -S gen/cpp -B build/cpp
-          fi
+          cmake -S gen/cpp -B build/cpp -G Ninja \
+            -DCMAKE_PREFIX_PATH="${PROTOBUF_PREFIX}" \
+            -DProtobuf_DIR="${PROTOBUF_PREFIX}/lib/cmake/protobuf"
 
       - name: Build
         run: cmake --build build/cpp -j
@@ -112,6 +125,7 @@ jobs:
           path: |
             build/cpp/libampy_proto.a
             gen/cpp/**/*.h
+
 
 
   go-smoke:
