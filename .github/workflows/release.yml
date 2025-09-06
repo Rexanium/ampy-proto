@@ -75,7 +75,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PROTOBUF_VERSION: v27.3           # any v27.x is fine; matches generator headers with runtime_version.h
-      PROTOBUF_PREFIX: ${{ runner.temp }}/protobuf-install
+      PROTOBUF_PREFIX: /tmp/protobuf-install
     steps:
       - uses: actions/checkout@v4
       - uses: bufbuild/buf-setup-action@v1
