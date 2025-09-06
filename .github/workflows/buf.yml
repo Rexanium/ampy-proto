@@ -45,7 +45,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install deps
-        run: pip install protobuf>=6.32.0,<7
+        run: pip install "protobuf>=6.32.0,<7"
 
       - name: Run round-trip tests
         run: PYTHONPATH=gen/python python tests/roundtrip/python_roundtrip.py
