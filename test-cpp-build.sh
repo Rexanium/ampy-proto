@@ -32,8 +32,8 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     tar -xzf protobuf-24.4.tar.gz
     cd protobuf-24.4
     mkdir build && cd build
-    # Build protobuf without Abseil to avoid target naming conflicts
-    cmake -DCMAKE_BUILD_TYPE=Release -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_ABSL_PROVIDER=none -DCMAKE_INSTALL_PREFIX=/usr/local ..
+    # Build protobuf with system Abseil to ensure compatibility
+    cmake -DCMAKE_BUILD_TYPE=Release -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_ABSL_PROVIDER=package -DCMAKE_INSTALL_PREFIX=/usr/local ..
     make -j$(nproc)
     sudo make install
     sudo ldconfig

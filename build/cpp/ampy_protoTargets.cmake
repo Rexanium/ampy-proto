@@ -51,7 +51,7 @@ add_library(ampy_proto STATIC IMPORTED)
 
 set_target_properties(ampy_proto PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "/Users/yeonlee/ampy-proto/gen/cpp"
-  INTERFACE_LINK_LIBRARIES "protobuf::libprotobuf;absl::base;absl::strings;absl::log"
+  INTERFACE_LINK_LIBRARIES "protobuf::libprotobuf;absl::base;absl::strings;/opt/homebrew/lib/libabsl_base.dylib;/opt/homebrew/lib/libabsl_strings.dylib"
 )
 
 # Import target "ampy_proto" for configuration ""

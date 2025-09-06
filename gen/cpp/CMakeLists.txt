@@ -8,6 +8,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Protobuf REQUIRED)
 # Try to find Abseil, but make it optional for compatibility
 find_package(absl QUIET)
+# Also try to find Abseil using pkg-config as fallback
+find_package(PkgConfig QUIET)
+if(PkgConfig_FOUND)
+  pkg_check_modules(ABSL QUIET absl_base absl_strings)
+endif()
 
 # Collect all generated C++ sources
 file(GLOB_RECURSE AMPYPB_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/ampy/**/*.cc")
@@ -41,6 +46,11 @@ if(absl_FOUND)
         absl::strings
     )
   endif()
+elseif(ABSL_FOUND)
+  # Use pkg-config found Abseil libraries
+  target_include_directories(ampy_proto PUBLIC ${ABSL_INCLUDE_DIRS})
+  target_compile_options(ampy_proto PUBLIC ${ABSL_CFLAGS_OTHER})
+  target_link_libraries(ampy_proto PUBLIC ${ABSL_LIBRARIES})
 endif()
 
 # Fallback: try to link system Abseil libraries directly
