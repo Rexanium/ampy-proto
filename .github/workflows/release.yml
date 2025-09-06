@@ -107,7 +107,10 @@ jobs:
           "$PROTOBUF_PREFIX/bin/protoc" --version
 
       - name: Generate code
-        run: buf generate proto
+        run: |
+          # Use the protobuf compiler we just built
+          export PATH="$PROTOBUF_PREFIX/bin:$PATH"
+          buf generate proto
 
       - name: Configure (CMake) using installed Protobuf
         run: |
