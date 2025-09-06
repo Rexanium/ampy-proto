@@ -80,16 +80,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libabsl-dev cmake build-essential
-          # Install newer protobuf version to match generated code
-          wget https://github.com/protocolbuffers/protobuf/releases/download/v25.1/protobuf-25.1.tar.gz
-          tar -xzf protobuf-25.1.tar.gz
-          cd protobuf-25.1
-          mkdir build && cd build
-          # Build protobuf without Abseil to avoid dependency issues
-          cmake -DCMAKE_BUILD_TYPE=Release -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_ABSL_PROVIDER=none -DCMAKE_INSTALL_PREFIX=/usr/local ..
-          make -j$(nproc)
-          sudo make install
-          sudo ldconfig
+          # Install protobuf from Ubuntu packages (compatible version)
+          sudo apt-get install -y libprotobuf-dev protobuf-compiler
       - name: Generate code
         run: buf generate proto
       - name: Build (CMake)
