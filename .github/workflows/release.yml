@@ -83,28 +83,27 @@ jobs:
       - name: Install build toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install -y git cmake ninja-build g++ make zlib1g-dev
+          sudo apt-get install -y git cmake ninja-build g++ make zlib1g-dev unzip
 
       - name: Cache Protobuf build
         id: cache-protobuf
         uses: actions/cache@v4
         with:
           path: ${{ env.PROTOBUF_PREFIX }}
-          key: protobuf-${{ env.PROTOBUF_VERSION }}-linux-x86_64-absl-module
+          key: protobuf-${{ env.PROTOBUF_VERSION }}-linux-x86_64-prebuilt
 
-      - name: Build & install Protobuf ${{ env.PROTOBUF_VERSION }}
+      - name: Install Protobuf ${{ env.PROTOBUF_VERSION }}
         if: steps.cache-protobuf.outputs.cache-hit != 'true'
         run: |
           set -e
-          git clone --depth 1 --branch $PROTOBUF_VERSION --recurse-submodules https://github.com/protocolbuffers/protobuf.git
-          cmake -S protobuf -B protobuf/build -G Ninja \
-            -DCMAKE_BUILD_TYPE=Release \
-            -Dprotobuf_BUILD_TESTS=OFF \
-            -Dprotobuf_ABSL_PROVIDER=module \
-            -DCMAKE_INSTALL_PREFIX="$PROTOBUF_PREFIX"
-          cmake --build protobuf/build -j
-          cmake --install protobuf/build
+          # Use pre-built protoc compiler for speed
+          wget https://github.com/protocolbuffers/protobuf/releases/download/$PROTOBUF_VERSION/protoc-$PROTOBUF_VERSION-linux-x86_64.zip
+          unzip protoc-$PROTOBUF_VERSION-linux-x86_64.zip -d "$PROTOBUF_PREFIX"
+          chmod +x "$PROTOBUF_PREFIX/bin/protoc"
           "$PROTOBUF_PREFIX/bin/protoc" --version
+          
+          # Install C++ libraries from Ubuntu packages (faster than building from source)
+          sudo apt-get install -y libprotobuf-dev libprotobuf32t64
 
       - name: Generate code
         run: |
@@ -112,11 +111,9 @@ jobs:
           export PATH="$PROTOBUF_PREFIX/bin:$PATH"
           buf generate proto
 
-      - name: Configure (CMake) using installed Protobuf
+      - name: Configure (CMake) using system Protobuf
         run: |
-          cmake -S gen/cpp -B build/cpp -G Ninja \
-            -DCMAKE_PREFIX_PATH="${PROTOBUF_PREFIX}" \
-            -DProtobuf_DIR="${PROTOBUF_PREFIX}/lib/cmake/protobuf"
+          cmake -S gen/cpp -B build/cpp -G Ninja
 
       - name: Build
         run: cmake --build build/cpp -j
