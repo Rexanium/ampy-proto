@@ -1,0 +1,47 @@
+syntax = "proto3";
+package ampy.ticks.v1;
+
+option csharp_namespace = "Ampy.Ticks.V1";
+option java_multiple_files = true;
+option java_package = "dev.ampy.ticks.v1";
+option objc_class_prefix = "AmpyTicksV1";
+// go_package is managed by buf.gen.yaml managed mode (go_package_prefix).
+
+import "google/protobuf/timestamp.proto";
+import "ampy/common/v1/common.proto";
+
+// Trade tick for executions.
+message TradeTick {
+  ampy.common.v1.SecurityId security = 1;
+  ampy.common.v1.Decimal price = 2;
+  int64 size = 3; // shares/contracts; allow zero only if explicitly permitted by feed
+  string venue = 4; // MIC or venue code
+  google.protobuf.Timestamp event_time = 5;
+  google.protobuf.Timestamp ingest_time = 6;
+  ampy.common.v1.Meta meta = 7;
+}
+
+// Quote tick for bid/ask updates.
+message QuoteTick {
+  ampy.common.v1.SecurityId security = 1;
+  ampy.common.v1.Decimal bid = 2;
+  int64 bid_size = 3;
+  ampy.common.v1.Decimal ask = 4;
+  int64 ask_size = 5;
+  string venue = 6; // e.g., NBBO consolidator or venue code
+  google.protobuf.Timestamp event_time = 7;
+  google.protobuf.Timestamp ingest_time = 8;
+  ampy.common.v1.Meta meta = 9;
+}
+
+// Unified tick with a oneof to ensure only one variant is set.
+message Tick {
+  oneof kind {
+    TradeTick trade = 1;
+    QuoteTick quote = 2;
+  }
+}
+
+message TickBatch {
+  repeated Tick ticks = 1;
+}

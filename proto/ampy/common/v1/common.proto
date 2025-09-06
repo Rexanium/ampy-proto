@@ -1,0 +1,42 @@
+syntax = "proto3";
+package ampy.common.v1;
+
+option csharp_namespace = "Ampy.Common.V1";
+option java_multiple_files = true;
+option java_package = "dev.ampy.common.v1";
+option objc_class_prefix = "AmpyCommonV1";
+// go_package is managed by buf.gen.yaml managed mode (go_package_prefix).
+
+import "google/protobuf/timestamp.proto";
+
+// Decimal uses scaled integer semantics to avoid float rounding errors.
+// Example: scaled=123456, scale=4 => 12.3456
+message Decimal {
+  // Signed to support negative values (e.g., PnL).
+  sint64 scaled = 1;
+  int32 scale = 2;
+}
+
+// Money value with ISO-4217 currency code (e.g., "USD", "EUR", "JPY", "KRW").
+message Money {
+  Decimal amount = 1;
+  string currency_code = 2;
+}
+
+// Security identity — avoid relying on ticker alone.
+// "mic" is the ISO 10383 market identifier code (e.g., "XNAS", "XNYS").
+message SecurityId {
+  string symbol = 1;
+  string mic = 2;
+  string figi = 3; // optional
+  string isin = 4; // optional
+}
+
+// Meta lineage fields for traceability and reproducibility.
+message Meta {
+  string run_id = 1;          // workflow/run identifier
+  string source = 2;          // e.g., "yfinance-go", "databento-cpp"
+  string producer = 3;        // instance name/id
+  string schema_version = 4;  // e.g., "ampy.bars.v1:1.0.0"
+  string checksum = 5;        // optional payload checksum/hash
+}

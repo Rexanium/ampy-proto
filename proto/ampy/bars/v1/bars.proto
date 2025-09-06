@@ -1,0 +1,51 @@
+syntax = "proto3";
+package ampy.bars.v1;
+
+option csharp_namespace = "Ampy.Bars.V1";
+option java_multiple_files = true;
+option java_package = "dev.ampy.bars.v1";
+option objc_class_prefix = "AmpyBarsV1";
+// go_package is managed by buf.gen.yaml managed mode (go_package_prefix).
+
+import "google/protobuf/timestamp.proto";
+import "ampy/common/v1/common.proto";
+
+// Adjustment policy identifiers:
+// - "raw"
+// - "split_only"
+// - "split_dividend"
+
+message Bar {
+  ampy.common.v1.SecurityId security = 1;
+  // Inclusive start, exclusive end of the bar interval.
+  google.protobuf.Timestamp start = 2;
+  google.protobuf.Timestamp end = 3;
+
+  // Prices as scaled decimals; presence indicates availability.
+  ampy.common.v1.Decimal open = 4;
+  ampy.common.v1.Decimal high = 5;
+  ampy.common.v1.Decimal low = 6;
+  ampy.common.v1.Decimal close = 7;
+
+  // Optional VWAP; omit if unavailable.
+  ampy.common.v1.Decimal vwap = 8;
+
+  // Non-negative integer; omit (default 0) is allowed for unknown, but prefer explicit absence in storage.
+  int64 volume = 9;
+  int64 trade_count = 10;
+
+  bool adjusted = 11;
+  string adjustment_policy_id = 12;
+
+  // Timestamps (UTC). event_time should be the bar close timestamp.
+  google.protobuf.Timestamp event_time = 13;
+  google.protobuf.Timestamp ingest_time = 14;
+  google.protobuf.Timestamp as_of = 15;
+
+  ampy.common.v1.Meta meta = 16;
+}
+
+// Batch wrapper for efficient transport.
+message BarBatch {
+  repeated Bar bars = 1;
+}
