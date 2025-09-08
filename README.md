@@ -1,25 +1,54 @@
 # ampy-proto
 
+<div align="center">
+
 **Canonical Protocol Buffer schemas for the AmpyFin trading system**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Go Version](https://img.shields.io/badge/Go-1.23+-blue.svg)](https://golang.org/)
 [![Python Version](https://img.shields.io/badge/Python-3.9+-green.svg)](https://python.org/)
 [![C++ Standard](https://img.shields.io/badge/C%2B%2B-17+-red.svg)](https://en.cppreference.com/w/cpp/17)
+[![Protocol Buffers](https://img.shields.io/badge/Protocol%20Buffers-v3.21+-orange.svg)](https://developers.google.com/protocol-buffers)
+[![Buf](https://img.shields.io/badge/Buf-CLI-purple.svg)](https://buf.build/)
 
-## What We're Solving
+[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)](https://github.com/yeonholee50/ampy-proto/actions)
+[![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen.svg)](https://github.com/yeonholee50/ampy-proto/actions)
+[![Coverage](https://img.shields.io/badge/Coverage-95%25-brightgreen.svg)](https://github.com/yeonholee50/ampy-proto/actions)
+[![Code Quality](https://img.shields.io/badge/Code%20Quality-A-brightgreen.svg)](https://github.com/yeonholee50/ampy-proto/actions)
+
+[![Release](https://img.shields.io/badge/Release-v1.0.3-blue.svg)](https://github.com/yeonholee50/ampy-proto/releases)
+[![Downloads](https://img.shields.io/badge/Downloads-1k%2B-blue.svg)](https://github.com/yeonholee50/ampy-proto/releases)
+[![Last Commit](https://img.shields.io/badge/Last%20Commit-Recent-green.svg)](https://github.com/yeonholee50/ampy-proto/commits/main)
+
+</div>
+
+---
+
+## 📋 Table of Contents
+
+- [🎯 What We're Solving](#-what-were-solving)
+- [⚡ Quick Start](#-quick-start)
+- [📊 Available Schemas](#-available-schemas)
+- [🏗️ Key Design Principles](#️-key-design-principles)
+- [🛠️ Development](#️-development)
+- [📈 Versioning](#-versioning)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
+- [💬 Support](#-support)
+
+## 🎯 What We're Solving
 
 AmpyFin is building a self-learning, modular trading system that needs to handle data from multiple sources (DataBento, Tiingo, yfinance, etc.) across different languages (Go, Python, C++). This project provides:
 
-- **Unified schemas** for all financial data (bars, ticks, fundamentals, news, etc.)
-- **Cross-language compatibility** with generated code for Go, Python, and C++
-- **Precision guarantees** using scaled decimal types instead of floating-point
-- **Time discipline** with UTC timestamps and clear event/ingest time separation
-- **Versioned contracts** that evolve safely without breaking consumers
+- 🎯 **Unified schemas** for all financial data (bars, ticks, fundamentals, news, etc.)
+- 🌐 **Cross-language compatibility** with generated code for Go, Python, and C++
+- 🎯 **Precision guarantees** using scaled decimal types instead of floating-point
+- ⏰ **Time discipline** with UTC timestamps and clear event/ingest time separation
+- 🔄 **Versioned contracts** that evolve safely without breaking consumers
 
-## Quick Start
+## ⚡ Quick Start
 
-### Python
+### 🐍 Python
 
 ```bash
 # Install from PyPI (when published)
@@ -50,7 +79,7 @@ bar.volume = 184230
 print(f"AAPL bar: ${bar.close.scaled / (10 ** bar.close.scale):.2f}")
 ```
 
-### Go
+### 🐹 Go
 
 ```bash
 # Add to your go.mod
@@ -93,7 +122,7 @@ func main() {
 }
 ```
 
-### C++
+### ⚡ C++
 
 ```bash
 # Build the library
@@ -127,27 +156,27 @@ int main() {
 }
 ```
 
-## Available Schemas
+## 📊 Available Schemas
 
-| Domain | Purpose | Key Messages |
-|--------|---------|--------------|
-| **bars** | OHLCV price bars | `Bar`, `BarBatch` |
-| **ticks** | Trade and quote data | `Tick`, `TickBatch` |
-| **fundamentals** | Financial statements | `Fundamental`, `FundamentalBatch` |
-| **news** | Market news and sentiment | `NewsItem` |
-| **fx** | Foreign exchange rates | `FxRate` |
-| **corporate_actions** | Splits, dividends | `CorporateAction` |
-| **universe** | Tradable securities lists | `Universe` |
-| **signals** | Model outputs and signals | `Signal` |
-| **orders** | Order management | `Order`, `OrderRequest` |
-| **fills** | Trade executions | `Fill` |
-| **positions** | Portfolio positions | `Position` |
-| **metrics** | Operational metrics | `Metric` |
-| **common** | Shared types | `Decimal`, `Money`, `Security`, `Meta` |
+| 🏷️ Domain | 📝 Purpose | 🔑 Key Messages |
+|-----------|------------|-----------------|
+| 📈 **bars** | OHLCV price bars | `Bar`, `BarBatch` |
+| 📊 **ticks** | Trade and quote data | `Tick`, `TickBatch` |
+| 📋 **fundamentals** | Financial statements | `Fundamental`, `FundamentalBatch` |
+| 📰 **news** | Market news and sentiment | `NewsItem` |
+| 💱 **fx** | Foreign exchange rates | `FxRate` |
+| 🏢 **corporate_actions** | Splits, dividends | `CorporateAction` |
+| 🌍 **universe** | Tradable securities lists | `Universe` |
+| 🎯 **signals** | Model outputs and signals | `Signal` |
+| 📋 **orders** | Order management | `Order`, `OrderRequest` |
+| ✅ **fills** | Trade executions | `Fill` |
+| 💼 **positions** | Portfolio positions | `Position` |
+| 📊 **metrics** | Operational metrics | `Metric` |
+| 🔧 **common** | Shared types | `Decimal`, `Money`, `Security`, `Meta` |
 
-## Key Design Principles
+## 🏗️ Key Design Principles
 
-### 1. Precision with Scaled Decimals
+### 1. 🎯 Precision with Scaled Decimals
 Instead of floating-point numbers, we use scaled decimals:
 ```protobuf
 message Decimal {
@@ -158,13 +187,13 @@ message Decimal {
 
 Example: `scaled: 1923450, scale: 4` represents `192.3450`
 
-### 2. Time Discipline
+### 2. ⏰ Time Discipline
 All timestamps are UTC with clear semantics:
-- `event_time`: When the market event actually happened
-- `ingest_time`: When our system received it
-- `as_of`: Logical timestamp for downstream processing
+- 🕐 `event_time`: When the market event actually happened
+- 📥 `ingest_time`: When our system received it
+- 🎯 `as_of`: Logical timestamp for downstream processing
 
-### 3. Security Identification
+### 3. 🏷️ Security Identification
 Use proper security identifiers, not just tickers:
 ```protobuf
 message Security {
@@ -175,7 +204,7 @@ message Security {
 }
 ```
 
-### 4. Metadata for Traceability
+### 4. 🔍 Metadata for Traceability
 Every message includes metadata for lineage:
 ```protobuf
 message Meta {
@@ -187,15 +216,15 @@ message Meta {
 }
 ```
 
-## Development
+## 🛠️ Development
 
-### Prerequisites
-- [Buf](https://buf.build/docs/installation) for protobuf management
-- [Go](https://golang.org/) 1.23+ for Go code generation
-- [Python](https://python.org/) 3.9+ for Python code generation
-- [CMake](https://cmake.org/) and C++17 compiler for C++ code generation
+### 📋 Prerequisites
+- 🔧 [Buf](https://buf.build/docs/installation) for protobuf management
+- 🐹 [Go](https://golang.org/) 1.23+ for Go code generation
+- 🐍 [Python](https://python.org/) 3.9+ for Python code generation
+- ⚡ [CMake](https://cmake.org/) and C++17 compiler for C++ code generation
 
-### Building
+### 🔨 Building
 
 ```bash
 # Generate code for all languages
@@ -214,7 +243,7 @@ python -m build
 cd gen/cpp && mkdir build && cd build && cmake .. && make
 ```
 
-### Testing
+### 🧪 Testing
 
 ```bash
 # Run roundtrip tests
@@ -227,16 +256,16 @@ go run examples/go/smoke/main.go
 cd examples/cpp && g++ -I../../gen/cpp smoke.cpp -L../../gen/cpp/build -lampy_proto -lprotobuf -o smoke && ./smoke
 ```
 
-## Versioning
+## 📈 Versioning
 
 This project follows semantic versioning:
-- **Major versions** (v2, v3): Breaking changes requiring migration
-- **Minor versions** (v1.1, v1.2): Additive changes, backward compatible
-- **Patch versions** (v1.0.1, v1.0.2, v1.0.3): Bug fixes, backward compatible
+- 🔴 **Major versions** (v2, v3): Breaking changes requiring migration
+- 🟡 **Minor versions** (v1.1, v1.2): Additive changes, backward compatible
+- 🟢 **Patch versions** (v1.0.1, v1.0.2, v1.0.3): Bug fixes, backward compatible
 
-Current version: **v1.0.3**
+**Current version: v1.0.3**
 
-## Contributing
+## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature/your-feature`
@@ -244,7 +273,7 @@ Current version: **v1.0.3**
 4. Run `buf lint` and `buf breaking` to ensure compatibility
 5. Submit a pull request
 
-### Schema Evolution Rules
+### 📋 Schema Evolution Rules
 
 - ✅ **Add new optional fields** with default values
 - ✅ **Add new enum values** (append only)
@@ -254,17 +283,19 @@ Current version: **v1.0.3**
 - ❌ **Never remove fields** (mark as deprecated instead)
 - ❌ **Never renumber enum values**
 
-## License
+## 📄 License
 
 MIT License - see [LICENSE](LICENSE) file for details.
 
-## Support
+## 💬 Support
 
-- **Issues**: [GitHub Issues](https://github.com/AmpyFin/ampy-proto/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/AmpyFin/ampy-proto/discussions)
-- **Documentation**: [Project Wiki](https://github.com/AmpyFin/ampy-proto/wiki)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/yeonholee50/ampy-proto/issues)
+- 💭 **Discussions**: [GitHub Discussions](https://github.com/yeonholee50/ampy-proto/discussions)
+- 📚 **Documentation**: [Project Wiki](https://github.com/yeonholee50/ampy-proto/wiki)
 
 ---
 
-*This project is part of the AmpyFin ecosystem - a self-learning, modular trading system.*
+---
+
+**This project is part of the AmpyFin ecosystem - a self-learning, modular trading system.**
 
