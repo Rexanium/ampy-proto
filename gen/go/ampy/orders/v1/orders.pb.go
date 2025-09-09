@@ -7,7 +7,7 @@
 package ordersv1
 
 import (
-	v1 "github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/common/v1"
+	v1 "github.com/AmpyFin/ampy-proto/gen/go/ampy/common/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -234,7 +234,7 @@ const file_ampy_orders_v1_orders_proto_rawDesc = "" +
 	"\x04meta\x18\r \x01(\v2\x14.ampy.common.v1.MetaR\x04meta\"I\n" +
 	"\x11OrderRequestBatch\x124\n" +
 	"\x06orders\x18\x01 \x03(\v2\x1c.ampy.orders.v1.OrderRequestR\x06ordersB\xb9\x01\n" +
-	"\x12com.ampy.orders.v1B\vOrdersProtoP\x01Z<github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/orders/v1;ordersv1\xa2\x02\x03AOX\xaa\x02\x0eAmpy.Orders.V1\xca\x02\x0eAmpy\\Orders\\V1\xe2\x02\x1aAmpy\\Orders\\V1\\GPBMetadata\xea\x02\x10Ampy::Orders::V1b\x06proto3"
+	"\x12com.ampy.orders.v1B\vOrdersProtoP\x01Z<github.com/AmpyFin/ampy-proto/gen/go/ampy/orders/v1;ordersv1\xa2\x02\x03AOX\xaa\x02\x0eAmpy.Orders.V1\xca\x02\x0eAmpy\\Orders\\V1\xe2\x02\x1aAmpy\\Orders\\V1\\GPBMetadata\xea\x02\x10Ampy::Orders::V1b\x06proto3"
 
 var (
 	file_ampy_orders_v1_orders_proto_rawDescOnce sync.Once

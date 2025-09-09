@@ -7,7 +7,7 @@
 package fxv1
 
 import (
-	v1 "github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/common/v1"
+	v1 "github.com/AmpyFin/ampy-proto/gen/go/ampy/common/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -221,7 +221,7 @@ const file_ampy_fx_v1_fx_proto_rawDesc = "" +
 	"\x04meta\x18\x06 \x01(\v2\x14.ampy.common.v1.MetaR\x04meta\"7\n" +
 	"\vFxRateBatch\x12(\n" +
 	"\x05rates\x18\x01 \x03(\v2\x12.ampy.fx.v1.FxRateR\x05ratesB\x99\x01\n" +
-	"\x0ecom.ampy.fx.v1B\aFxProtoP\x01Z4github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/fx/v1;fxv1\xa2\x02\x03AFX\xaa\x02\n" +
+	"\x0ecom.ampy.fx.v1B\aFxProtoP\x01Z4github.com/AmpyFin/ampy-proto/gen/go/ampy/fx/v1;fxv1\xa2\x02\x03AFX\xaa\x02\n" +
 	"Ampy.Fx.V1\xca\x02\n" +
 	"Ampy\\Fx\\V1\xe2\x02\x16Ampy\\Fx\\V1\\GPBMetadata\xea\x02\fAmpy::Fx::V1b\x06proto3"
 

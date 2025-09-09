@@ -7,7 +7,7 @@
 package ticksv1
 
 import (
-	v1 "github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/common/v1"
+	v1 "github.com/AmpyFin/ampy-proto/gen/go/ampy/common/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -386,7 +386,7 @@ const file_ampy_ticks_v1_ticks_proto_rawDesc = "" +
 	"\tTickBatch\x12)\n" +
 	"\x05ticks\x18\x01 \x03(\v2\x13.ampy.ticks.v1.TickR\x05ticksB\xb1\x01\n" +
 	"\x11com.ampy.ticks.v1B\n" +
-	"TicksProtoP\x01Z:github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/ticks/v1;ticksv1\xa2\x02\x03ATX\xaa\x02\rAmpy.Ticks.V1\xca\x02\rAmpy\\Ticks\\V1\xe2\x02\x19Ampy\\Ticks\\V1\\GPBMetadata\xea\x02\x0fAmpy::Ticks::V1b\x06proto3"
+	"TicksProtoP\x01Z:github.com/AmpyFin/ampy-proto/gen/go/ampy/ticks/v1;ticksv1\xa2\x02\x03ATX\xaa\x02\rAmpy.Ticks.V1\xca\x02\rAmpy\\Ticks\\V1\xe2\x02\x19Ampy\\Ticks\\V1\\GPBMetadata\xea\x02\x0fAmpy::Ticks::V1b\x06proto3"
 
 var (
 	file_ampy_ticks_v1_ticks_proto_rawDescOnce sync.Once

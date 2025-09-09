@@ -1,8 +1,5 @@
-module github.com/AmpyFin/ampy-proto/v2
+module github.com/AmpyFin/ampy-proto
 
 go 1.23
 
-require (
-	github.com/AmpyFin/ampy-proto v1.0.30
-	google.golang.org/protobuf v1.36.8
-)
+require google.golang.org/protobuf v1.36.8
