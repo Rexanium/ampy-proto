@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ampy-proto"
-version = "2.0.4"
+version = "2.0.5"
 description = "Canonical schemas for AmpyFin (generated Python protobufs)"
 readme = "README.md"
 requires-python = ">=3.9"
