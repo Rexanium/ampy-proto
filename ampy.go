@@ -28,4 +28,4 @@ import (
 )
 
 // Version returns the current version of the ampy-proto library.
-const Version = "2.0.3"
+const Version = "2.0.4"

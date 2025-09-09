@@ -16,7 +16,7 @@
 [![Coverage](https://img.shields.io/badge/Coverage-95%25-brightgreen.svg)](https://github.com/yeonholee50/ampy-proto/actions)
 [![Code Quality](https://img.shields.io/badge/Code%20Quality-A-brightgreen.svg)](https://github.com/yeonholee50/ampy-proto/actions)
 
-[![Release](https://img.shields.io/badge/Release-v2.0.3-blue.svg)](https://github.com/yeonholee50/ampy-proto/releases)
+[![Release](https://img.shields.io/badge/Release-v2.0.4-blue.svg)](https://github.com/yeonholee50/ampy-proto/releases)
 [![Downloads](https://img.shields.io/badge/Downloads-1k%2B-blue.svg)](https://github.com/yeonholee50/ampy-proto/releases)
 [![Last Commit](https://img.shields.io/badge/Last%20Commit-Recent-green.svg)](https://github.com/yeonholee50/ampy-proto/commits/main)
 
@@ -83,10 +83,10 @@ print(f"AAPL bar: ${bar.close.scaled / (10 ** bar.close.scale):.2f}")
 
 ```bash
 # Install all ampy-proto packages at once
-go get github.com/AmpyFin/ampy-proto@v2.0.3
+go get github.com/AmpyFin/ampy-proto@v2.0.4
 
 # Or install specific packages only
-go get github.com/AmpyFin/ampy-proto/gen/go/ampy/bars/v1@v2.0.3
+go get github.com/AmpyFin/ampy-proto/gen/go/ampy/bars/v1@v2.0.4
 ```
 
 ```go
@@ -266,7 +266,7 @@ This project follows semantic versioning:
 - 🟡 **Minor versions** (v1.1, v1.2): Additive changes, backward compatible
 - 🟢 **Patch versions** (v1.0.1, v1.0.2, v1.0.3): Bug fixes, backward compatible
 
-**Current version: v2.0.3**
+**Current version: v2.0.4**
 
 ## 🤝 Contributing
 
