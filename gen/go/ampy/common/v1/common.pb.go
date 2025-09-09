@@ -651,7 +651,7 @@ const file_ampy_common_v1_common_proto_rawDesc = "" +
 	"\x10ACTION_TYPE_SELL\x10\x02\x12\x14\n" +
 	"\x10ACTION_TYPE_HOLD\x10\x03\x12\x15\n" +
 	"\x11ACTION_TYPE_CLOSE\x10\x04B\xb9\x01\n" +
-	"\x12com.ampy.common.v1B\vCommonProtoP\x01Z<github.com/AmpyFin/ampy-proto/gen/go/ampy/common/v1;commonv1\xa2\x02\x03ACX\xaa\x02\x0eAmpy.Common.V1\xca\x02\x0eAmpy\\Common\\V1\xe2\x02\x1aAmpy\\Common\\V1\\GPBMetadata\xea\x02\x10Ampy::Common::V1b\x06proto3"
+	"\x12com.ampy.common.v1B\vCommonProtoP\x01Z<github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/common/v1;commonv1\xa2\x02\x03ACX\xaa\x02\x0eAmpy.Common.V1\xca\x02\x0eAmpy\\Common\\V1\xe2\x02\x1aAmpy\\Common\\V1\\GPBMetadata\xea\x02\x10Ampy::Common::V1b\x06proto3"
 
 var (
 	file_ampy_common_v1_common_proto_rawDescOnce sync.Once

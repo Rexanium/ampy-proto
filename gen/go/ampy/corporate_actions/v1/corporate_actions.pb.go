@@ -7,7 +7,7 @@
 package corporate_actionsv1
 
 import (
-	v1 "github.com/AmpyFin/ampy-proto/gen/go/ampy/common/v1"
+	v1 "github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/common/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -325,7 +325,7 @@ const file_ampy_corporate_actions_v1_corporate_actions_proto_rawDesc = "" +
 	"\x06action\"\\\n" +
 	"\x14CorporateActionBatch\x12D\n" +
 	"\aactions\x18\x01 \x03(\v2*.ampy.corporate_actions.v1.CorporateActionR\aactionsB\x8c\x02\n" +
-	"\x1dcom.ampy.corporate_actions.v1B\x15CorporateActionsProtoP\x01ZRgithub.com/AmpyFin/ampy-proto/gen/go/ampy/corporate_actions/v1;corporate_actionsv1\xa2\x02\x03ACX\xaa\x02\x18Ampy.CorporateActions.V1\xca\x02\x18Ampy\\CorporateActions\\V1\xe2\x02$Ampy\\CorporateActions\\V1\\GPBMetadata\xea\x02\x1aAmpy::CorporateActions::V1b\x06proto3"
+	"\x1dcom.ampy.corporate_actions.v1B\x15CorporateActionsProtoP\x01ZRgithub.com/AmpyFin/ampy-proto/v2/gen/go/ampy/corporate_actions/v1;corporate_actionsv1\xa2\x02\x03ACX\xaa\x02\x18Ampy.CorporateActions.V1\xca\x02\x18Ampy\\CorporateActions\\V1\xe2\x02$Ampy\\CorporateActions\\V1\\GPBMetadata\xea\x02\x1aAmpy::CorporateActions::V1b\x06proto3"
 
 var (
 	file_ampy_corporate_actions_v1_corporate_actions_proto_rawDescOnce sync.Once

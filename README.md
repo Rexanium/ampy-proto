@@ -83,10 +83,10 @@ print(f"AAPL bar: ${bar.close.scaled / (10 ** bar.close.scale):.2f}")
 
 ```bash
 # Install all ampy-proto packages at once
-go get github.com/AmpyFin/ampy-proto@v2.0.3
+go get github.com/AmpyFin/ampy-proto/v2@v2.0.3
 
 # Or install specific packages only
-go get github.com/AmpyFin/ampy-proto/gen/go/ampy/bars/v1@v2.0.3
+go get github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/bars/v1@v2.0.3
 ```
 
 ```go
@@ -94,7 +94,7 @@ package main
 
 import (
     "fmt"
-    barspb "github.com/AmpyFin/ampy-proto/gen/go/ampy/bars/v1"
+    barspb "github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/bars/v1"
 )
 
 func main() {

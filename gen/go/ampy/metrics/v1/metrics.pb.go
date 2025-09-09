@@ -149,7 +149,7 @@ const file_ampy_metrics_v1_metrics_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"@\n" +
 	"\vMetricBatch\x121\n" +
 	"\ametrics\x18\x01 \x03(\v2\x17.ampy.metrics.v1.MetricR\ametricsB\xc1\x01\n" +
-	"\x13com.ampy.metrics.v1B\fMetricsProtoP\x01Z>github.com/AmpyFin/ampy-proto/gen/go/ampy/metrics/v1;metricsv1\xa2\x02\x03AMX\xaa\x02\x0fAmpy.Metrics.V1\xca\x02\x0fAmpy\\Metrics\\V1\xe2\x02\x1bAmpy\\Metrics\\V1\\GPBMetadata\xea\x02\x11Ampy::Metrics::V1b\x06proto3"
+	"\x13com.ampy.metrics.v1B\fMetricsProtoP\x01Z>github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/metrics/v1;metricsv1\xa2\x02\x03AMX\xaa\x02\x0fAmpy.Metrics.V1\xca\x02\x0fAmpy\\Metrics\\V1\xe2\x02\x1bAmpy\\Metrics\\V1\\GPBMetadata\xea\x02\x11Ampy::Metrics::V1b\x06proto3"
 
 var (
 	file_ampy_metrics_v1_metrics_proto_rawDescOnce sync.Once

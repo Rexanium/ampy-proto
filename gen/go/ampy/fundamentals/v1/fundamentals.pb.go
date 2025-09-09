@@ -7,7 +7,7 @@
 package fundamentalsv1
 
 import (
-	v1 "github.com/AmpyFin/ampy-proto/gen/go/ampy/common/v1"
+	v1 "github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/common/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -239,7 +239,7 @@ const file_ampy_fundamentals_v1_fundamentals_proto_rawDesc = "" +
 	"\x04meta\x18\x05 \x01(\v2\x14.ampy.common.v1.MetaR\x04meta\"]\n" +
 	"\x11FundamentalsBatch\x12H\n" +
 	"\tsnapshots\x18\x01 \x03(\v2*.ampy.fundamentals.v1.FundamentalsSnapshotR\tsnapshotsB\xe9\x01\n" +
-	"\x18com.ampy.fundamentals.v1B\x11FundamentalsProtoP\x01ZHgithub.com/AmpyFin/ampy-proto/gen/go/ampy/fundamentals/v1;fundamentalsv1\xa2\x02\x03AFX\xaa\x02\x14Ampy.Fundamentals.V1\xca\x02\x14Ampy\\Fundamentals\\V1\xe2\x02 Ampy\\Fundamentals\\V1\\GPBMetadata\xea\x02\x16Ampy::Fundamentals::V1b\x06proto3"
+	"\x18com.ampy.fundamentals.v1B\x11FundamentalsProtoP\x01ZHgithub.com/AmpyFin/ampy-proto/v2/gen/go/ampy/fundamentals/v1;fundamentalsv1\xa2\x02\x03AFX\xaa\x02\x14Ampy.Fundamentals.V1\xca\x02\x14Ampy\\Fundamentals\\V1\xe2\x02 Ampy\\Fundamentals\\V1\\GPBMetadata\xea\x02\x16Ampy::Fundamentals::V1b\x06proto3"
 
 var (
 	file_ampy_fundamentals_v1_fundamentals_proto_rawDescOnce sync.Once
