@@ -7,7 +7,7 @@
 package newsv1
 
 import (
-	v1 "github.com/AmpyFin/ampy-proto/gen/go/ampy/common/v1"
+	v1 "github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/common/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -203,7 +203,7 @@ const file_ampy_news_v1_news_proto_rawDesc = "" +
 	" \x01(\v2\x14.ampy.common.v1.MetaR\x04meta\"9\n" +
 	"\tNewsBatch\x12,\n" +
 	"\x05items\x18\x01 \x03(\v2\x16.ampy.news.v1.NewsItemR\x05itemsB\xa9\x01\n" +
-	"\x10com.ampy.news.v1B\tNewsProtoP\x01Z8github.com/AmpyFin/ampy-proto/gen/go/ampy/news/v1;newsv1\xa2\x02\x03ANX\xaa\x02\fAmpy.News.V1\xca\x02\fAmpy\\News\\V1\xe2\x02\x18Ampy\\News\\V1\\GPBMetadata\xea\x02\x0eAmpy::News::V1b\x06proto3"
+	"\x10com.ampy.news.v1B\tNewsProtoP\x01Z8github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/news/v1;newsv1\xa2\x02\x03ANX\xaa\x02\fAmpy.News.V1\xca\x02\fAmpy\\News\\V1\xe2\x02\x18Ampy\\News\\V1\\GPBMetadata\xea\x02\x0eAmpy::News::V1b\x06proto3"
 
 var (
 	file_ampy_news_v1_news_proto_rawDescOnce sync.Once

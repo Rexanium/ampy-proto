@@ -7,7 +7,7 @@
 package fillsv1
 
 import (
-	v1 "github.com/AmpyFin/ampy-proto/gen/go/ampy/common/v1"
+	v1 "github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/common/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -195,7 +195,7 @@ const file_ampy_fills_v1_fills_proto_rawDesc = "" +
 	"\tFillBatch\x12.\n" +
 	"\x05fills\x18\x01 \x03(\v2\x18.ampy.fills.v1.FillEventR\x05fillsB\xb1\x01\n" +
 	"\x11com.ampy.fills.v1B\n" +
-	"FillsProtoP\x01Z:github.com/AmpyFin/ampy-proto/gen/go/ampy/fills/v1;fillsv1\xa2\x02\x03AFX\xaa\x02\rAmpy.Fills.V1\xca\x02\rAmpy\\Fills\\V1\xe2\x02\x19Ampy\\Fills\\V1\\GPBMetadata\xea\x02\x0fAmpy::Fills::V1b\x06proto3"
+	"FillsProtoP\x01Z:github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/fills/v1;fillsv1\xa2\x02\x03AFX\xaa\x02\rAmpy.Fills.V1\xca\x02\rAmpy\\Fills\\V1\xe2\x02\x19Ampy\\Fills\\V1\\GPBMetadata\xea\x02\x0fAmpy::Fills::V1b\x06proto3"
 
 var (
 	file_ampy_fills_v1_fills_proto_rawDescOnce sync.Once
