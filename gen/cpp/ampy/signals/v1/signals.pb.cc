@@ -152,12 +152,12 @@ const char descriptor_table_protodef_ampy_2fsignals_2fv1_2fsignals_2eproto[] ABS
     "v1.ActionTypeH\000R\006action\022(\n\004meta\030\t \001(\0132\024."
     "ampy.common.v1.MetaR\004metaB\007\n\005value\"@\n\013Si"
     "gnalBatch\0221\n\007signals\030\001 \003(\0132\027.ampy.signal"
-    "s.v1.SignalR\007signalsB\301\001\n\023com.ampy.signal"
-    "s.v1B\014SignalsProtoP\001Z>github.com/AmpyFin"
-    "/ampy-proto/gen/go/ampy/signals/v1;signa"
-    "lsv1\242\002\003ASX\252\002\017Ampy.Signals.V1\312\002\017Ampy\\Sign"
-    "als\\V1\342\002\033Ampy\\Signals\\V1\\GPBMetadata\352\002\021A"
-    "mpy::Signals::V1b\006proto3"
+    "s.v1.SignalR\007signalsB\304\001\n\023com.ampy.signal"
+    "s.v1B\014SignalsProtoP\001ZAgithub.com/AmpyFin"
+    "/ampy-proto/v2/gen/go/ampy/signals/v1;si"
+    "gnalsv1\242\002\003ASX\252\002\017Ampy.Signals.V1\312\002\017Ampy\\S"
+    "ignals\\V1\342\002\033Ampy\\Signals\\V1\\GPBMetadata\352"
+    "\002\021Ampy::Signals::V1b\006proto3"
 };
 static const ::_pbi::DescriptorTable* PROTOBUF_NONNULL const
     descriptor_table_ampy_2fsignals_2fv1_2fsignals_2eproto_deps[2] = {
@@ -168,7 +168,7 @@ static ::absl::once_flag descriptor_table_ampy_2fsignals_2fv1_2fsignals_2eproto_
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_ampy_2fsignals_2fv1_2fsignals_2eproto = {
     false,
     false,
-    824,
+    827,
     descriptor_table_protodef_ampy_2fsignals_2fv1_2fsignals_2eproto,
     "ampy/signals/v1/signals.proto",
     &descriptor_table_ampy_2fsignals_2fv1_2fsignals_2eproto_once,

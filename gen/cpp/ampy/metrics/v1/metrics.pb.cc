@@ -154,12 +154,12 @@ const char descriptor_table_protodef_ampy_2fmetrics_2fv1_2fmetrics_2eproto[] ABS
     "9\n\013LabelsEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005valu"
     "e\030\002 \001(\tR\005value:\0028\001\"@\n\013MetricBatch\0221\n\007met"
     "rics\030\001 \003(\0132\027.ampy.metrics.v1.MetricR\007met"
-    "ricsB\301\001\n\023com.ampy.metrics.v1B\014MetricsPro"
-    "toP\001Z>github.com/AmpyFin/ampy-proto/gen/"
-    "go/ampy/metrics/v1;metricsv1\242\002\003AMX\252\002\017Amp"
-    "y.Metrics.V1\312\002\017Ampy\\Metrics\\V1\342\002\033Ampy\\Me"
-    "trics\\V1\\GPBMetadata\352\002\021Ampy::Metrics::V1"
-    "b\006proto3"
+    "ricsB\304\001\n\023com.ampy.metrics.v1B\014MetricsPro"
+    "toP\001ZAgithub.com/AmpyFin/ampy-proto/v2/g"
+    "en/go/ampy/metrics/v1;metricsv1\242\002\003AMX\252\002\017"
+    "Ampy.Metrics.V1\312\002\017Ampy\\Metrics\\V1\342\002\033Ampy"
+    "\\Metrics\\V1\\GPBMetadata\352\002\021Ampy::Metrics:"
+    ":V1b\006proto3"
 };
 static const ::_pbi::DescriptorTable* PROTOBUF_NONNULL const
     descriptor_table_ampy_2fmetrics_2fv1_2fmetrics_2eproto_deps[1] = {
@@ -169,7 +169,7 @@ static ::absl::once_flag descriptor_table_ampy_2fmetrics_2fv1_2fmetrics_2eproto_
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_ampy_2fmetrics_2fv1_2fmetrics_2eproto = {
     false,
     false,
-    568,
+    571,
     descriptor_table_protodef_ampy_2fmetrics_2fv1_2fmetrics_2eproto,
     "ampy/metrics/v1/metrics.proto",
     &descriptor_table_ampy_2fmetrics_2fv1_2fmetrics_2eproto_once,

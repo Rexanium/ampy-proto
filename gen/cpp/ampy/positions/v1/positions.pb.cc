@@ -145,13 +145,13 @@ const char descriptor_table_protodef_ampy_2fpositions_2fv1_2fpositions_2eproto[]
     "obuf.TimestampR\004asOf\022(\n\004meta\030\010 \001(\0132\024.amp"
     "y.common.v1.MetaR\004meta\"R\n\rPositionBatch\022"
     "A\n\tpositions\030\001 \003(\0132#.ampy.positions.v1.P"
-    "ositionSnapshotR\tpositionsB\321\001\n\025com.ampy."
-    "positions.v1B\016PositionsProtoP\001ZBgithub.c"
-    "om/AmpyFin/ampy-proto/gen/go/ampy/positi"
-    "ons/v1;positionsv1\242\002\003APX\252\002\021Ampy.Position"
-    "s.V1\312\002\021Ampy\\Positions\\V1\342\002\035Ampy\\Position"
-    "s\\V1\\GPBMetadata\352\002\023Ampy::Positions::V1b\006"
-    "proto3"
+    "ositionSnapshotR\tpositionsB\324\001\n\025com.ampy."
+    "positions.v1B\016PositionsProtoP\001ZEgithub.c"
+    "om/AmpyFin/ampy-proto/v2/gen/go/ampy/pos"
+    "itions/v1;positionsv1\242\002\003APX\252\002\021Ampy.Posit"
+    "ions.V1\312\002\021Ampy\\Positions\\V1\342\002\035Ampy\\Posit"
+    "ions\\V1\\GPBMetadata\352\002\023Ampy::Positions::V"
+    "1b\006proto3"
 };
 static const ::_pbi::DescriptorTable* PROTOBUF_NONNULL const
     descriptor_table_ampy_2fpositions_2fv1_2fpositions_2eproto_deps[2] = {
@@ -162,7 +162,7 @@ static ::absl::once_flag descriptor_table_ampy_2fpositions_2fv1_2fpositions_2epr
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_ampy_2fpositions_2fv1_2fpositions_2eproto = {
     false,
     false,
-    846,
+    849,
     descriptor_table_protodef_ampy_2fpositions_2fv1_2fpositions_2eproto,
     "ampy/positions/v1/positions.proto",
     &descriptor_table_ampy_2fpositions_2fv1_2fpositions_2eproto_once,

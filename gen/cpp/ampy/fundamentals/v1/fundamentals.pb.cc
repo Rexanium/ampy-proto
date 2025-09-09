@@ -186,13 +186,13 @@ const char descriptor_table_protodef_ampy_2ffundamentals_2fv1_2ffundamentals_2ep
     "tampR\004asOf\022(\n\004meta\030\005 \001(\0132\024.ampy.common.v"
     "1.MetaR\004meta\"]\n\021FundamentalsBatch\022H\n\tsna"
     "pshots\030\001 \003(\0132*.ampy.fundamentals.v1.Fund"
-    "amentalsSnapshotR\tsnapshotsB\351\001\n\030com.ampy"
-    ".fundamentals.v1B\021FundamentalsProtoP\001ZHg"
-    "ithub.com/AmpyFin/ampy-proto/gen/go/ampy"
-    "/fundamentals/v1;fundamentalsv1\242\002\003AFX\252\002\024"
-    "Ampy.Fundamentals.V1\312\002\024Ampy\\Fundamentals"
-    "\\V1\342\002 Ampy\\Fundamentals\\V1\\GPBMetadata\352\002"
-    "\026Ampy::Fundamentals::V1b\006proto3"
+    "amentalsSnapshotR\tsnapshotsB\354\001\n\030com.ampy"
+    ".fundamentals.v1B\021FundamentalsProtoP\001ZKg"
+    "ithub.com/AmpyFin/ampy-proto/v2/gen/go/a"
+    "mpy/fundamentals/v1;fundamentalsv1\242\002\003AFX"
+    "\252\002\024Ampy.Fundamentals.V1\312\002\024Ampy\\Fundament"
+    "als\\V1\342\002 Ampy\\Fundamentals\\V1\\GPBMetadat"
+    "a\352\002\026Ampy::Fundamentals::V1b\006proto3"
 };
 static const ::_pbi::DescriptorTable* PROTOBUF_NONNULL const
     descriptor_table_ampy_2ffundamentals_2fv1_2ffundamentals_2eproto_deps[2] = {
@@ -203,7 +203,7 @@ static ::absl::once_flag descriptor_table_ampy_2ffundamentals_2fv1_2ffundamental
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_ampy_2ffundamentals_2fv1_2ffundamentals_2eproto = {
     false,
     false,
-    951,
+    954,
     descriptor_table_protodef_ampy_2ffundamentals_2fv1_2ffundamentals_2eproto,
     "ampy/fundamentals/v1/fundamentals.proto",
     &descriptor_table_ampy_2ffundamentals_2fv1_2ffundamentals_2eproto_once,
