@@ -1,5 +1,3 @@
-github.com/AmpyFin/ampy-proto v1.0.30 h1:k3KBdv/YkMuAU9qDWXIQdcCXiYyirNLDjcbHIq81aLA=
-github.com/AmpyFin/ampy-proto v1.0.30/go.mod h1:eSSjvJIYMUZTHW8nzFehB0i70tLsu2lB63ixyrOWW9A=
 github.com/google/go-cmp v0.5.5 h1:Khx7svrCpmxxtHBq5j2mp/xVjsi8hQMfNLvJFAlrGgU=
 github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
 golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543 h1:E7g+9GITq07hpfrRu66IVDexMakfv52eLZ2CXBWiKr4=
