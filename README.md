@@ -11,14 +11,14 @@
 [![Protocol Buffers](https://img.shields.io/badge/Protocol%20Buffers-v3.21+-orange.svg)](https://developers.google.com/protocol-buffers)
 [![Buf](https://img.shields.io/badge/Buf-CLI-purple.svg)](https://buf.build/)
 
-[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)](https://github.com/yeonholee50/ampy-proto/actions)
-[![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen.svg)](https://github.com/yeonholee50/ampy-proto/actions)
-[![Coverage](https://img.shields.io/badge/Coverage-95%25-brightgreen.svg)](https://github.com/yeonholee50/ampy-proto/actions)
-[![Code Quality](https://img.shields.io/badge/Code%20Quality-A-brightgreen.svg)](https://github.com/yeonholee50/ampy-proto/actions)
+[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)](https://github.com/AmpyFin/ampy-proto/actions)
+[![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen.svg)](https://github.com/AmpyFin/ampy-proto/actions)
+[![Coverage](https://img.shields.io/badge/Coverage-95%25-brightgreen.svg)](https://github.com/AmpyFin/ampy-proto/actions)
+[![Code Quality](https://img.shields.io/badge/Code%20Quality-A-brightgreen.svg)](https://github.com/AmpyFin/ampy-proto/actions)
 
-[![Release](https://img.shields.io/badge/Release-v2.0.6-blue.svg)](https://github.com/yeonholee50/ampy-proto/releases)
-[![Downloads](https://img.shields.io/badge/Downloads-1k%2B-blue.svg)](https://github.com/yeonholee50/ampy-proto/releases)
-[![Last Commit](https://img.shields.io/badge/Last%20Commit-Recent-green.svg)](https://github.com/yeonholee50/ampy-proto/commits/main)
+[![Release](https://img.shields.io/badge/Release-v2.0.8-blue.svg)](https://github.com/AmpyFin/ampy-proto/releases)
+[![Downloads](https://img.shields.io/badge/Downloads-1k%2B-blue.svg)](https://github.com/AmpyFin/ampy-proto/releases)
+[![Last Commit](https://img.shields.io/badge/Last%20Commit-Recent-green.svg)](https://github.com/AmpyFin/ampy-proto/commits/main)
 
 </div>
 
@@ -83,10 +83,10 @@ print(f"AAPL bar: ${bar.close.scaled / (10 ** bar.close.scale):.2f}")
 
 ```bash
 # Install all ampy-proto packages at once
-go get github.com/AmpyFin/ampy-proto/v2@v2.0.6
+go get github.com/AmpyFin/ampy-proto/v2@v2.0.8
 
 # Or install specific packages only
-go get github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/bars/v1@v2.0.6
+go get github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/bars/v1@v2.0.8
 ```
 
 ```go
@@ -95,27 +95,28 @@ package main
 import (
     "fmt"
     barspb "github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/bars/v1"
+    commonpb "github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/common/v1"
 )
 
 func main() {
     bar := &barspb.Bar{}
-    bar.Security = &barspb.Security{
+    bar.Security = &commonpb.SecurityId{
         Symbol: "AAPL",
         Mic:    "XNAS",
     }
-    bar.Open = &barspb.Decimal{
+    bar.Open = &commonpb.Decimal{
         Scaled: 1923450,
         Scale:  4,
     }
-    bar.High = &barspb.Decimal{
+    bar.High = &commonpb.Decimal{
         Scaled: 1925600,
         Scale:  4,
     }
-    bar.Low = &barspb.Decimal{
+    bar.Low = &commonpb.Decimal{
         Scaled: 1922200,
         Scale:  4,
     }
-    bar.Close = &barspb.Decimal{
+    bar.Close = &commonpb.Decimal{
         Scaled: 1924100,
         Scale:  4,
     }
@@ -266,7 +267,15 @@ This project follows semantic versioning:
 - 🟡 **Minor versions** (v1.1, v1.2): Additive changes, backward compatible
 - 🟢 **Patch versions** (v1.0.1, v1.0.2, v1.0.3): Bug fixes, backward compatible
 
-**Current version: v2.0.6**
+**Current version: v2.0.8**
+
+### 🆕 What's New in v2.0.8
+
+- ✅ **Fixed protobuf generation compatibility** - Resolved slice bounds errors with protoc-gen-go v1.36.8
+- ✅ **Updated import paths** - All examples now use the correct v2 module path
+- ✅ **Synchronized versions** - Consistent protobuf versions across all configurations
+- ✅ **Improved smoke tests** - All language examples (Go, Python, C++) now pass successfully
+- ✅ **Enhanced stability** - Better compatibility with modern protobuf toolchains
 
 ## 🤝 Contributing
 
@@ -292,9 +301,9 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 💬 Support
 
-- 🐛 **Issues**: [GitHub Issues](https://github.com/yeonholee50/ampy-proto/issues)
-- 💭 **Discussions**: [GitHub Discussions](https://github.com/yeonholee50/ampy-proto/discussions)
-- 📚 **Documentation**: [Project Wiki](https://github.com/yeonholee50/ampy-proto/wiki)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/AmpyFin/ampy-proto/issues)
+- 💭 **Discussions**: [GitHub Discussions](https://github.com/AmpyFin/ampy-proto/discussions)
+- 📚 **Documentation**: [Project Wiki](https://github.com/AmpyFin/ampy-proto/wiki)
 
 ---
 
