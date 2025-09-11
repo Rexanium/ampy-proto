@@ -7,7 +7,7 @@ managed:
 
 plugins:
   # Remote plugins (no 'opt: paths=source_relative' with remote)
-  - plugin: buf.build/protocolbuffers/go:v1.35.2
+  - plugin: buf.build/protocolbuffers/go:v1.36.8
     out: gen/go
     opt: paths=source_relative
 
