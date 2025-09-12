@@ -1,72 +1,39 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
+# Build artifacts
 build/
-develop-eggs/
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
 *.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
 
-# Virtual environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-.venv/
+# Generated code (keep in repo for distribution)
+# gen/
 
-# IDE
+# IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# OS
+# OS files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
 
-# Generated protobuf files (optional - you might want to commit these)
-# gen/
+# Test artifacts
+coverage/
+.coverage
+.pytest_cache/
+*.prof
 
-# Build artifacts
-*.o
-*.a
-*.so
-*.dylib
-*.dll
+# Temporary files
+*.tmp
+*.temp
+*.log
 
-# CMake
-CMakeCache.txt
-CMakeFiles/
-cmake_install.cmake
-Makefile
-*.cmake
-!CMakeLists.txt
-
-# Go
+# Go specific
 *.exe
 *.exe~
 *.dll
@@ -76,79 +43,29 @@ Makefile
 *.out
 go.work
 
-# Temporary files
-*.tmp
-*.temp
-*.log
-*.pid
-*.seed
-*.pid.lock
-
-# Coverage reports
+# Python specific
+*.egg
+*.egg-info/
+.pytest_cache/
+.coverage
 htmlcov/
 .tox/
-.nox/
-.coverage
-.coverage.*
 .cache
 nosetests.xml
 coverage.xml
 *.cover
-*.py,cover
 .hypothesis/
-.pytest_cache/
-cover/
 
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# pyenv
-.python-version
-
-# pipenv
-Pipfile.lock
-
-# poetry
-poetry.lock
-
-# Celery
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
-
-# Project specific
-*.zip
-*.tar.gz
+# C++ specific
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
