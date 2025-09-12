@@ -256,9 +256,9 @@ cd examples/cpp && g++ -I../../gen/cpp smoke.cpp -L../../gen/cpp/build -lampy_pr
 This project follows semantic versioning:
 - **Major versions** (v2, v3): Breaking changes requiring migration
 - **Minor versions** (v2.1, v2.2): Additive changes, backward compatible
-- **Patch versions** (v2.0.1, v2.0.2): Bug fixes, backward compatible
+- **Patch versions** (v2.0.8, v2.0.9): Bug fixes, backward compatible
 
-Current version: **v2.0.1**
+Current version: **v2.0.9**
 
 ## Contributing
 

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(ampy_proto VERSION 2.0.9 LANGUAGES CXX)
+project(ampy_proto VERSION 2.1.1 LANGUAGES CXX)
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
