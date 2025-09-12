@@ -8,6 +8,12 @@ __pycache__/
 *.pyd
 .Python
 
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
 # Generated code (keep in repo for distribution)
 # gen/
 
