@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.9] - 2024-12-19
+
+### Fixed
+- Fixed Go module structure for proper pkg.go.dev indexing by moving convenience package to `pkg/ampy/`
+- Resolved package conflicts that caused pkg.go.dev to display module as "smoke" instead of "ampy-proto"
+- Updated all version references to 2.0.9 across documentation and package files
+
+### Changed
+- Moved convenience package from root `ampy.go` to `pkg/ampy/ampy.go` for better module organization
+- Updated import path for convenience package: `github.com/AmpyFin/ampy-proto/v2/pkg/ampy`
+- Updated README with correct installation commands and import examples
+
 ## [2.0.8] - 2024-12-19
 
 ### Fixed

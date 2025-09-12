@@ -15,10 +15,10 @@ ampy-proto provides type-safe, cross-language schemas for financial market data 
 
 ```bash
 # Install the convenience package (imports all schemas)
-go get github.com/AmpyFin/ampy-proto/v2@v2.0.8
+go get github.com/AmpyFin/ampy-proto/v2@v2.0.9
 
 # Or install specific packages only
-go get github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/bars/v1@v2.0.8
+go get github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/bars/v1@v2.0.9
 ```
 
 ```go
@@ -62,7 +62,7 @@ func main() {
 ### Python
 
 ```bash
-pip install ampy-proto==2.0.8
+pip install ampy-proto==2.0.9
 ```
 
 ```python
@@ -174,14 +174,14 @@ This project follows semantic versioning:
 - **Minor versions** (v2.1, v2.2): Additive changes, backward compatible
 - **Patch versions** (v2.0.8, v2.0.9): Bug fixes, backward compatible
 
-**Current version: v2.0.8**
+**Current version: v2.0.9**
 
 ## 🔧 Requirements
 
 ### Go
 ```go
 require (
-    github.com/AmpyFin/ampy-proto/v2 v2.0.8+
+    github.com/AmpyFin/ampy-proto/v2 v2.0.9+
     google.golang.org/protobuf v1.36.8
 )
 ```
