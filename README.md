@@ -14,7 +14,11 @@ ampy-proto provides type-safe, cross-language schemas for financial market data 
 ### Go
 
 ```bash
+# Install the convenience package (imports all schemas)
 go get github.com/AmpyFin/ampy-proto/v2@v2.0.8
+
+# Or install specific packages only
+go get github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/bars/v1@v2.0.8
 ```
 
 ```go
@@ -24,6 +28,7 @@ import (
     "fmt"
     "time"
     
+    "github.com/AmpyFin/ampy-proto/v2/pkg/ampy"
     bars "github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/bars/v1"
     common "github.com/AmpyFin/ampy-proto/v2/gen/go/ampy/common/v1"
     "google.golang.org/protobuf/proto"
@@ -50,7 +55,7 @@ func main() {
     }
 
     data, _ := proto.Marshal(bar)
-    fmt.Printf("Serialized %d bytes\n", len(data))
+    fmt.Printf("Serialized %d bytes using ampy-proto v%s\n", len(data), ampy.Version)
 }
 ```
 
